@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -15,7 +15,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Categories::paginate(10);
+        $categories = Category::paginate(10);
         return view('shop.admin.category.index', compact('categories'));
     }
 
@@ -37,17 +37,17 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Categories::create($request->validated());
+        Category::create($request->validated());
         return redirect()->route('category.index')->with('success','Category has been created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Category  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $category)
+    public function show(Category $category)
     {
         return view('shop.admin.category.show', compact('category'));
     }
@@ -55,10 +55,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Category  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $category)
+    public function edit(Category $category)
     {
         return view('shop.admin.category.edit', compact('category'));
     }
@@ -67,10 +67,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\CategoryRequest  $request
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Category  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Categories $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $category->fill($request->validated())->save();
         return redirect()->route('category.index')->with('success','Category Has Been updated successfully');
@@ -79,10 +79,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Category  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $category)
+    public function destroy(Category $category)
     {
         $category->delete();
         return redirect()->route('category.index')->with('success','Сategory has been deleted successfully');
