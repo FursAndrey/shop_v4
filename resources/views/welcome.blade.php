@@ -26,6 +26,11 @@
     </head>
     <body class="antialiased bg-gray-100">
         <div class="relative flex items-top justify-center py-4">
+            <div>
+                <a href="{{ route('admin_home') }}">home</a>
+                <a href="{{ route('category.index') }}">category</a>
+                <a href="{{ route('currency.index') }}">currency</a>
+            </div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
