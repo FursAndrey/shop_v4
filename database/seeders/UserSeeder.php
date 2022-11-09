@@ -25,6 +25,8 @@ class UserSeeder extends Seeder
                     'email_verified_at'=>Carbon::now(), 
                     'password'=>bcrypt('admin@admin.com'), 
                     'remember_token' => Str::random(10),
+                    'created_at'=>Carbon::now(), 
+                    'updated_at'=>Carbon::now()
                 ],
             ]
         );
