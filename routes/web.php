@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\CurrencyController;
 use Illuminate\Support\Facades\Route;
 
 /*
