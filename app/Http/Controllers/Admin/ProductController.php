@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\CreateProductAction;
+use App\Actions\UpdateProductAction;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
@@ -39,10 +41,9 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\ProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, CreateProductAction $createProductAction)
     {
-        $product = Product::create($request->validated());
-        $product->properties()->sync($request->property_id);
+        $createProductAction($request);
 
         return redirect()->route('product.index')->with('success','Product has been created successfully.');
     }
@@ -80,8 +81,8 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $product->fill($request->validated())->save();
-        $product->properties()->sync($request->property_id);
+        (new UpdateProductAction)($request, $product);
+        
         return redirect()->route('product.index')->with('success','Product Has Been updated successfully');
     }
 
