@@ -18,6 +18,7 @@
     <thead>
         <tr>
             <th scope="col">name</th>
+            <th scope="col">products</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -28,6 +29,11 @@
                 <a class="btn btn-primary" href="{{ route('property.show', $property->id) }}">
                     {{ $property->name_ru }} / {{ $property->name_en }}
                 </a>
+            </td>
+            <td>
+                @foreach ($property->products as $product)
+                    {{ $product->name_ru }} / {{ $product->name_en }}<br/>
+                @endforeach
             </td>
             <td>
                 <form action="{{ route('property.destroy', $property->id) }}" method="Post">

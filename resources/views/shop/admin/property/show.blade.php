@@ -19,6 +19,7 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">name</th>
+            <th scope="col">products</th>
             <th scope="col">created/<br/>updated</th>
             <th scope="col"></th>
         </tr>
@@ -27,6 +28,11 @@
         <tr>
             <td>{{ $property->id }}</td>
             <td>{{ $property->name_ru }} / {{ $property->name_en }}</td>
+            <td>
+                @foreach ($property->products as $product)
+                    {{ $product->name_ru }} / {{ $product->name_en }}<br/>
+                @endforeach
+            </td>
             <td>{{ $property->created_at }}<br/>{{ $property->updated_at }}</td>
             <td>
                 <form action="{{ route('property.destroy', $property->id) }}" method="Post">

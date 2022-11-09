@@ -60,6 +60,22 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="property_id" class="form-label">Property</label>
+            @php
+                $product_properties = $product->properties->map->id->toArray();
+            @endphp
+            <select name="property_id[]" class="form-select" id="property_id" multiple size="5">
+                @foreach ($properties as $property)
+                <option value="{{ $property->id }}" @if(null !== old('property_id')) @selected(old('property_id') == $property->id) @else @selected(in_array($property->id, $product_properties)) @endif>
+                    {{ $property->id }} - {{ $property->name_ru }}/{{ $property->name_en }}
+                </option>
+                @endforeach
+            </select>
+            @error('property_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </div>
 </form>

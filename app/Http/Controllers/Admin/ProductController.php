@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Property;
 
 class ProductController extends Controller
 {
@@ -28,7 +29,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('shop.admin.product.create', compact('categories'));
+        $properties = Property::get();
+        return view('shop.admin.product.create', compact('categories', 'properties'));
     }
 
     /**
@@ -39,7 +41,9 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::create($request->validated());
+        $product = Product::create($request->validated());
+        $product->properties()->sync($request->property_id);
+
         return redirect()->route('product.index')->with('success','Product has been created successfully.');
     }
 
@@ -63,7 +67,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        return view('shop.admin.product.edit', compact('product', 'categories'));
+        $properties = Property::get();
+        return view('shop.admin.product.edit', compact('product', 'categories', 'properties'));
     }
 
     /**
@@ -76,6 +81,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->fill($request->validated())->save();
+        $product->properties()->sync($request->property_id);
         return redirect()->route('product.index')->with('success','Product Has Been updated successfully');
     }
 

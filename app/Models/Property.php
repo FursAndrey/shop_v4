@@ -13,4 +13,9 @@ class Property extends Model
         'name_ru',
         'name_en',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withTimestamps();
+    }
 }

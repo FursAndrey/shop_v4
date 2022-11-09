@@ -59,6 +59,19 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="property_id" class="form-label">Property</label>
+            <select name="property_id" class="form-select" id="property_id">
+                @foreach ($properties as $property)
+                <option value="{{ $property->id }}" @selected(old('property_id') == $property->id)>
+                    {{ $property->id }} - {{ $property->name_ru }}/{{ $property->name_en }}
+                </option>
+                @endforeach
+            </select>
+            @error('property_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </div>
 </form>

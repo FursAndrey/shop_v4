@@ -28,5 +28,21 @@ class ProductSeeder extends Seeder
                 ['name_ru'=>'Магнит', 'name_en'=>'Magnet', 'category_id'=>3, 'description_ru'=>'Магнит на холодильник', 'description_en'=>'Magnet for fridge', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
             ]
         );
+
+        DB::table('product_property')->insert(
+            [
+                ['property_id'=>1, 'product_id'=>1, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>2, 'product_id'=>1, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>1, 'product_id'=>2, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>2, 'product_id'=>2, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>1, 'product_id'=>3, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>2, 'product_id'=>3, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>3, 'product_id'=>4, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>4, 'product_id'=>5, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>4, 'product_id'=>6, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>2, 'product_id'=>7, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+                ['property_id'=>2, 'product_id'=>8, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+            ]
+        );
     }
 }

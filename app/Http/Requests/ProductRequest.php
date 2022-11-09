@@ -50,6 +50,11 @@ class ProductRequest extends FormRequest
                 'integer',
                 'exists:categories,id',
             ],
+            'property_id' => [
+                'required',
+                'integer',
+                'exists:properties,id',
+            ],
         ];
         
         if (!empty($this->product)) {
