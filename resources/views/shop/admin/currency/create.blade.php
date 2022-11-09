@@ -13,7 +13,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>currency code:</strong>
-                <input type="text" name="code" class="form-control" placeholder="currency code">
+                <input type="text" name="code" value="{{ old('name_ru') }}" class="form-control" placeholder="currency code">
                 @error('code')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>currency rate:</strong>
-                <input type="text" name="rate" class="form-control" placeholder="currency rate">
+                <input type="text" name="rate" value="{{ old('rate') }}" class="form-control" placeholder="currency rate">
                 @error('rate')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror

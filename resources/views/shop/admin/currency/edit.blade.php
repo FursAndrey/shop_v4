@@ -14,7 +14,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>currency code:</strong>
-                <input type="text" name="code" value="{{ $currency->code }}" class="form-control" placeholder="currency code">
+                <input type="text" name="code" value="@if(null !== old('code')){{ old('code') }}@else{{ $currency->code }}@endif" class="form-control" placeholder="currency code">
                 @error('code')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -23,7 +23,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>currency rate:</strong>
-                <input type="text" name="rate" value="{{ $currency->rate }}" class="form-control" placeholder="currency rate">
+                <input type="text" name="rate" value="@if(null !== old('rate')){{ old('rate') }}@else{{ $currency->rate }}@endif" class="form-control" placeholder="currency rate">
                 @error('rate')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror

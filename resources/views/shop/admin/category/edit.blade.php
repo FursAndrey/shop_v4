@@ -14,7 +14,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>category name_ru:</strong>
-                <input type="text" name="name_ru" value="{{ $category->name_ru }}" class="form-control" placeholder="category name_ru">
+                <input type="text" name="name_ru" value="@if(null !== old('name_ru')){{ old('name_ru') }}@else{{ $category->name_ru }}@endif" class="form-control" placeholder="category name_ru">
                 @error('name_ru')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -23,7 +23,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>category name_en:</strong>
-                <input type="text" name="name_en" value="{{ $category->name_en }}" class="form-control" placeholder="category name_en">
+                <input type="text" name="name_en" value="@if(null !== old('name_en')){{ old('name_en') }}@else{{ $category->name_en }}@endif" class="form-control" placeholder="category name_en">
                 @error('name_en')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror

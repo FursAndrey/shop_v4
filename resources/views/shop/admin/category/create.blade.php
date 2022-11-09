@@ -13,7 +13,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>category name_ru:</strong>
-                <input type="text" name="name_ru" class="form-control" placeholder="category name_ru">
+                <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control" placeholder="category name_ru">
                 @error('name_ru')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>category name_en:</strong>
-                <input type="text" name="name_en" class="form-control" placeholder="category name_en">
+                <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control" placeholder="category name_en">
                 @error('name_en')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
