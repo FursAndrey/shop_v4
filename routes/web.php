@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('/category', CategoriesController::class);
 Route::resource('/currency', CurrencyController::class);
+Route::resource('/product', ProductController::class);
 
 require __DIR__.'/auth.php';
