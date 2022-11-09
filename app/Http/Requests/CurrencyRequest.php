@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CurrencyRequest extends FormRequest
 {
@@ -26,13 +27,20 @@ class CurrencyRequest extends FormRequest
         $rules = [
             'code' => [
                 'required',
+                'string',
                 'size:3',
             ],
             'rate' => [
                 'required',
                 'numeric',
+                'min:0.01',
             ]
         ];
+        if (!empty($this->currency)) {
+            $rules['code'][] = Rule::unique('currencies')->ignore($this->currency->id);
+        } else {
+            $rules['code'][] = Rule::unique('currencies');
+        }
 
         return $rules;
     }
