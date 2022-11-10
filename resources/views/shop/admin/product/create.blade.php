@@ -61,7 +61,7 @@
         </div>
         <div class="mb-3">
             <label for="property_id" class="form-label">Property</label>
-            <select name="property_id" class="form-select" id="property_id">
+            <select name="property_id[]" class="form-select" id="property_id" multiple size="5">
                 @foreach ($properties as $property)
                 <option value="{{ $property->id }}" @selected(old('property_id') == $property->id)>
                     {{ $property->id }} - {{ $property->name_ru }}/{{ $property->name_en }}

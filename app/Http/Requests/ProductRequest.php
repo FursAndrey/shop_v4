@@ -52,6 +52,10 @@ class ProductRequest extends FormRequest
             ],
             'property_id' => [
                 'required',
+                'array',
+            ],
+            'property_id.*' => [
+                'required',
                 'integer',
                 'exists:properties,id',
             ],
