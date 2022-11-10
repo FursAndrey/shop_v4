@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\SkuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +31,7 @@ Route::resource('/category', CategoriesController::class);
 Route::resource('/currency', CurrencyController::class);
 Route::resource('/product', ProductController::class);
 Route::resource('/property', PropertyController::class);
+Route::resource('/option', OptionController::class);
+Route::resource('/sku', SkuController::class);
 
 require __DIR__.'/auth.php';

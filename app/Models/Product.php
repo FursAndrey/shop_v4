@@ -26,4 +26,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Property::class)->withTimestamps();
     }
+
+    public function skus()
+    {
+        return $this->hasMany(Sku::class);
+    }
 }

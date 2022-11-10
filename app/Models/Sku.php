@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Property extends Model
+class Sku extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name_ru',
-        'name_en',
+        'price',
+        'count',
+        'product_id',
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany(Product::class)->withTimestamps();
+        return $this->belongsTo(Product::class);
     }
 
     public function options()
     {
-        return $this->hasMany(Option::class);
+        return $this->belongsToMany(Option::class)->withTimestamps();
     }
 }

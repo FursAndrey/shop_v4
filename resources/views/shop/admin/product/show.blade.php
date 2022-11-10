@@ -23,6 +23,7 @@
             <th scope="col">description_en</th>
             <th scope="col">category</th>
             <th scope="col">properties</th>
+            <th scope="col">skus</th>
             <th scope="col">created/<br/>updated</th>
             <th scope="col"></th>
         </tr>
@@ -37,6 +38,11 @@
             <td>
                 @foreach ($product->properties as $property)
                     {{ $property->name_ru }} / {{ $property->name_en }}<br/>
+                @endforeach
+            </td>
+            <td>
+                @foreach ($product->skus as $sku)
+                    #{{ $sku->id }} / {{ $sku->price }}BYN / count:{{ $sku->count }}<br/>
                 @endforeach
             </td>
             <td>{{ $product->created_at }}<br/>{{ $product->updated_at }}</td>
