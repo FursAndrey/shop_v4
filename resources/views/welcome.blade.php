@@ -33,6 +33,7 @@
                 <a href="{{ route('product.index') }}">product</a>
                 <a href="{{ route('property.index') }}">property</a>
                 <a href="{{ route('option.index') }}">option</a>
+                <a href="{{ route('sku.index') }}">sku</a>
             </div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
