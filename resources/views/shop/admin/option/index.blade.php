@@ -19,6 +19,7 @@
         <tr>
             <th scope="col">name</th>
             <th scope="col">properties</th>
+            <th scope="col">skus</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -31,6 +32,11 @@
                 </a>
             </td>
             <td>{{ $option->property->name_ru }} / {{ $option->property->name_en }}</td>
+            <td>
+                @foreach ($option->skus as $sku)
+                    {{ $sku->id }}<br/>
+                @endforeach
+            </td>
             <td>
                 <form action="{{ route('option.destroy', $option->id) }}" method="Post">
                     <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>

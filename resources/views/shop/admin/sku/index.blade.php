@@ -19,6 +19,7 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">product</th>
+            <th scope="col">options</th>
             <th scope="col">price</th>
             <th scope="col">count</th>
             <th scope="col"></th>
@@ -33,6 +34,11 @@
                 </a>
             </td>
             <td>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</td>
+            <td>
+                @foreach ($sku->options as $option)
+                    {{ $option->name_ru }}/{{ $option->name_en }}<br/>
+                @endforeach
+            </td>
             <td>{{ $sku->price }}BYN</td>
             <td>{{ $sku->count }}</td>
             <td>

@@ -42,6 +42,24 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        @php
+            $sku_options = $sku->options->map->id->toArray();
+        @endphp
+        @foreach ($sku->product->properties as $property)
+            <div class="mb-3">
+                <label for="option_id" class="form-label">property {{ $property->name_ru }}/{{ $property->name_en }}</label>
+                <select name="option_id[]" class="form-select" id="option_id">
+                    @foreach ($property->options as $option)
+                        <option value="{{ $option->id }}" @if(null !== old('option_id')) @selected(old('option_id') == $option->id) @else @selected(in_array($option->id, $sku_options)) @endif>
+                            {{ $option->name_ru }}/{{ $option->name_en }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('option_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        @endforeach
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </div>
 </form>

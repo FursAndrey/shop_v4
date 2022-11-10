@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SkuRequest extends FormRequest
 {
@@ -40,6 +41,17 @@ class SkuRequest extends FormRequest
                 'exists:products,id',
             ]
         ];
+        if (!empty($this->sku)) {
+            $rules['option_id'] = [
+                'required',
+                'array',
+            ];
+            $rules['option_id.*'] = [
+                'required',
+                'integer',
+                'exists:options,id',
+            ];
+        }
         
         return $rules;
     }

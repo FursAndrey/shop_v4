@@ -76,6 +76,8 @@ class SkuController extends Controller
     public function update(SkuRequest $request, Sku $sku)
     {
         $sku->fill($request->validated())->save();
+        $sku->options()->detach();
+        $sku->options()->attach($request->option_id);
         return redirect()->route('sku.index')->with('success','Sku Has Been updated successfully');
     }
 

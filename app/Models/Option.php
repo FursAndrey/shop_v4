@@ -19,4 +19,9 @@ class Option extends Model
     {
         return $this->belongsTo(Property::class);
     }
+
+    public function skus()
+    {
+        return $this->belongsToMany(Sku::class)->withTimestamps();
+    }
 }
