@@ -19,6 +19,7 @@
         <tr>
             <th scope="col">name</th>
             <th scope="col">products</th>
+            <th scope="col">options</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -33,6 +34,11 @@
             <td>
                 @foreach ($property->products as $product)
                     {{ $product->name_ru }} / {{ $product->name_en }}<br/>
+                @endforeach
+            </td>
+            <td>
+                @foreach ($property->options as $option)
+                    {{ $option->name_ru }} / {{ $option->name_en }}<br/>
                 @endforeach
             </td>
             <td>
