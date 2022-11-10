@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\DeleteSkuAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SkuRequest;
 use App\Models\Product;
@@ -76,8 +77,7 @@ class SkuController extends Controller
     public function update(SkuRequest $request, Sku $sku)
     {
         $sku->fill($request->validated())->save();
-        $sku->options()->detach();
-        $sku->options()->attach($request->option_id);
+        $sku->options()->sync($request->option_id);
         return redirect()->route('sku.index')->with('success','Sku Has Been updated successfully');
     }
 
@@ -89,7 +89,8 @@ class SkuController extends Controller
      */
     public function destroy(Sku $sku)
     {
-        $sku->delete();
+        (new DeleteSkuAction)($sku);
+
         return redirect()->route('sku.index')->with('success','Sku has been deleted successfully');
     }
 }

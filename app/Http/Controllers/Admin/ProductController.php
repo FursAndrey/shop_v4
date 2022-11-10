@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\CreateProductAction;
+use App\Actions\DeleteProductAction;
 use App\Actions\UpdateProductAction;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -94,7 +95,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        (new DeleteProductAction)($product);
+        
         return redirect()->route('product.index')->with('success','Product has been deleted successfully');
     }
 }
