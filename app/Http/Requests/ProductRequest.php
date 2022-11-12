@@ -59,6 +59,14 @@ class ProductRequest extends FormRequest
                 'integer',
                 'exists:properties,id',
             ],
+            'img' => [
+                'nullable',
+                'array',
+            ],
+            'img.*' => [
+                'image',
+                'mimes:jpeg,png,jpg',
+            ],
         ];
         
         if (!empty($this->product)) {

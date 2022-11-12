@@ -76,6 +76,15 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>product image:</strong>
+                <input multiple="multiple" name="image[]" type="file" class="form-control">
+                @error('image')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </div>
 </form>

@@ -57,5 +57,36 @@
         </tr>
     </tbody>
 </table>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">images</th>
+            <th scope="col" class="w-25"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @foreach ($product->images as $image)
+                    <div class="d-inline-block">
+                        <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" style="width: 200px;">
+                        <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger rounded-circle">X</button>
+                        </form>
+                    </div>
+                @endforeach
+            </td>
+            <td>
+                <form action="{{ route('daleteAllImg', $product->id) }}" method="Post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete all images</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 @endsection

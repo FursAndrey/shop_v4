@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
@@ -33,5 +34,7 @@ Route::resource('/product', ProductController::class);
 Route::resource('/property', PropertyController::class);
 Route::resource('/option', OptionController::class);
 Route::resource('/sku', SkuController::class);
+Route::delete('/image/{product}', [ImageController::class, 'destroyAll'])->name('daleteAllImg');
+Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
 
 require __DIR__.'/auth.php';
