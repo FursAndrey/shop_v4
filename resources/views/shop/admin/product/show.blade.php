@@ -61,14 +61,26 @@
     <thead>
         <tr>
             <th scope="col">images</th>
+            <th scope="col" class="w-25"></th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
                 @foreach ($product->images as $image)
-                    <img src="/storage/{{ $image->file }}" alt="изображение не добавлено" style="width: 200px;">
+                    <div class="d-inline-block">
+                        {{-- {{ $image->id }} --}}
+                        <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" style="width: 200px;">
+                        <form action="#" method="Post" class="d-inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger rounded-circle">X</button>
+                        </form>
+                    </div>
                 @endforeach
+            </td>
+            <td>
+                Delete all images
             </td>
         </tr>
     </tbody>

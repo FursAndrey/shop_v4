@@ -8,9 +8,8 @@ class DeleteOneImageAction
 {
     public function __invoke(Image $image)
     {
-        $file_image = str_replace('/', '\\', 'storage/'.$image->file);
-        if (file_exists($file_image)) {
-            unlink($file_image);
+        if (file_exists($image->file_for_delete)) {
+            unlink($image->file_for_delete);
         }
         $image->delete();
     }
