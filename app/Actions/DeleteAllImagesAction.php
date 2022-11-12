@@ -10,11 +10,7 @@ class DeleteAllImagesAction
     {
         if (!is_null($product->images)) {
             foreach ($product->images as $image) {
-                $file_image = str_replace('/', '\\', 'storage/'.$image->file);
-                if (file_exists($file_image)) {
-                    unlink($file_image);
-                }
-                $image->delete();
+                (new DeleteOneImageAction)($image);
             }
         }
     }
