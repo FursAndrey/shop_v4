@@ -69,9 +69,8 @@
             <td>
                 @foreach ($product->images as $image)
                     <div class="d-inline-block">
-                        {{-- {{ $image->id }} --}}
                         <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" style="width: 200px;">
-                        <form action="#" method="Post" class="d-inline-block">
+                        <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger rounded-circle">X</button>
@@ -80,7 +79,11 @@
                 @endforeach
             </td>
             <td>
-                Delete all images
+                <form action="{{ route('daleteAllImg', $product->id) }}" method="Post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete all images</button>
+                </form>
             </td>
         </tr>
     </tbody>
