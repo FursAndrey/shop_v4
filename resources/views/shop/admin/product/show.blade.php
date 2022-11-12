@@ -57,5 +57,21 @@
         </tr>
     </tbody>
 </table>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">images</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @foreach ($product->images as $image)
+                    <img src="/storage/{{ $image->file }}" alt="изображение не добавлено" style="width: 200px;">
+                @endforeach
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 @endsection

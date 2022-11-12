@@ -31,4 +31,9 @@ class Product extends Model
     {
         return $this->hasMany(Sku::class);
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }
