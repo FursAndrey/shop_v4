@@ -15,7 +15,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::paginate(10);
+        $properties = Property::with(['products', 'options'])->paginate(10);
         return view('shop.admin.property.index', compact('properties'));
     }
 

@@ -16,7 +16,7 @@ class OptionController extends Controller
      */
     public function index()
     {
-        $options = Option::paginate(10);
+        $options = Option::with(['skus', 'property'])->paginate(10);
         return view('shop.admin.option.index', compact('options'));
     }
 

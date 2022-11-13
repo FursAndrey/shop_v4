@@ -17,7 +17,7 @@ class SkuController extends Controller
      */
     public function index()
     {
-        $skus = Sku::paginate(15);
+        $skus = Sku::with(['options', 'product'])->paginate(15);
         return view('shop.admin.sku.index', compact('skus'));
     }
 
