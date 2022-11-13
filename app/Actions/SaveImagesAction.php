@@ -3,14 +3,13 @@
 namespace App\Actions;
 
 use App\Models\Image;
-use Illuminate\Http\Request;
 
 class SaveImagesAction
 {
-    public function __invoke(Request $request, int $productId)
+    public function __invoke(array $files, int $productId)
     {
-        if (!is_null($request->image)) {
-            foreach ($request->image as $image) {
+        if (!is_null($files)) {
+            foreach ($files as $image) {
                 $fileName = $image->store('uploads', 'public');
                 Image::create([
                     'product_id' => $productId,

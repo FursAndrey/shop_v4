@@ -12,6 +12,6 @@ class CreateProductAction
         $product = Product::create($request->validated());
         $product->properties()->sync($request->property_id);
 
-        (new SaveImagesAction)($request, $product->id);
+        (new SaveImagesAction)($request->image, $product->id);
     }
 }

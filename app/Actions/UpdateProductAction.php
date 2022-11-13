@@ -12,6 +12,6 @@ class UpdateProductAction
         $product->fill($request->validated())->save();
         $product->properties()->sync($request->property_id);
         
-        (new SaveImagesAction)($request, $product->id);
+        (new SaveImagesAction)($request->image, $product->id);
     }
 }
