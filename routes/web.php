@@ -24,17 +24,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('admin_home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::resource('/category', CategoriesController::class);
-Route::resource('/currency', CurrencyController::class);
-Route::resource('/product', ProductController::class);
-Route::resource('/property', PropertyController::class);
-Route::resource('/option', OptionController::class);
-Route::resource('/sku', SkuController::class);
-Route::delete('/image/{product}', [ImageController::class, 'destroyAll'])->name('daleteAllImg');
-Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    Route::resource('/category', CategoriesController::class);
+    Route::resource('/currency', CurrencyController::class);
+    Route::resource('/product', ProductController::class);
+    Route::resource('/property', PropertyController::class);
+    Route::resource('/option', OptionController::class);
+    Route::resource('/sku', SkuController::class);
+    Route::delete('/image/{product}', [ImageController::class, 'destroyAll'])->name('daleteAllImg');
+    Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
+});
 
 require __DIR__.'/auth.php';
