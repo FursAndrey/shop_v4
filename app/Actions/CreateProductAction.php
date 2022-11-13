@@ -13,7 +13,7 @@ class CreateProductAction
         $product = Product::create($request->validated());
         $product->properties()->sync($request->property_id);
 
-        $fileNames = (new SaveImagesAction)($request->image);
+        $fileNames = (new SaveRequestImagesAction)($request->image);
         foreach ($fileNames as $fileName) {
             Image::create([
                 'product_id' => $product->id,

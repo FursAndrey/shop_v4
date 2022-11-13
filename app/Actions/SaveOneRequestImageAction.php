@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-class SaveOneImageAction
+class SaveOneRequestImageAction
 {
     public function __invoke($image)
     {
