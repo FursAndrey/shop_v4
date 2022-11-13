@@ -9,6 +9,7 @@
             <a href="{{ route('property.index') }}">property</a>
             <a href="{{ route('option.index') }}">option</a>
             <a href="{{ route('sku.index') }}">sku</a>
+            <a href="{{ route('resetProject') }}">reset project</a>
         </h2>
     </x-slot>
 

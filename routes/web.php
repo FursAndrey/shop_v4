@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\ResetController;
 use App\Http\Controllers\Admin\SkuController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/sku', SkuController::class);
     Route::delete('/image/{product}', [ImageController::class, 'destroyAll'])->name('daleteAllImg');
     Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
+    Route::get('/reset', [ResetController::class, 'resetProject'])->name('resetProject');
 });
 
 require __DIR__.'/auth.php';
