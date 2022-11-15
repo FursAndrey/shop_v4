@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
-            <a href="{{ route('admin_home') }}">home</a>
+            <a href="{{ route('productList') }}">Shop</a>
             <a href="{{ route('category.index') }}">category</a>
             <a href="{{ route('currency.index') }}">currency</a>
             <a href="{{ route('product.index') }}">product</a>
