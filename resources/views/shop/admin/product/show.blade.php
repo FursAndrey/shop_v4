@@ -68,8 +68,8 @@
         <tr>
             <td>
                 @foreach ($product->images as $image)
-                    <div class="d-inline-block">
-                        <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" style="width: 200px;">
+                    <div class="d-inline-block border border-primary border-2 p-1">
+                        <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" class="d-inline-block" style="width: 200px;">
                         <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
                             @csrf
                             @method('DELETE')
