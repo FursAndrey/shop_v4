@@ -26,6 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('admin_home');
 Route::get('/productList/{categpry?}', [PageController::class, 'productListPage'])->name('productList');
+Route::get('/productPage/{productId}', [PageController::class, 'productPage'])->name('productPage');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {

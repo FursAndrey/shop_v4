@@ -14,4 +14,10 @@ class PageController extends Controller
 
         return view('shop.productList', compact('products'));
     }
+    
+    public function productPage(int $productId)
+    {
+        $product = Product::with(['images', 'skus', 'skus.options', 'skus.options.property'])->find($productId);
+        return view('shop.productPage', compact('product'));
+    }
 }
