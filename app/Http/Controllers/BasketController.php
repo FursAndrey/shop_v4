@@ -13,4 +13,10 @@ class BasketController
         
         return redirect()->route('productList');
     }
+
+    public function showBasket()
+    {
+        $basket = session('basket');
+        return view('shop.basket', compact('basket'));
+    }
 }

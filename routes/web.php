@@ -46,5 +46,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
+Route::get('/showBasket', [BasketController::class, 'showBasket'])->name('showBasket');
 
 require __DIR__.'/auth.php';

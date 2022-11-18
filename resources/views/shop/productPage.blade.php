@@ -5,7 +5,7 @@
 @section('content')
 <div class="bg-white border p-6 row">
     <div class="col-4 p-2">
-        <img src="{{ $product->images[0]->file_for_view }}" alt="изображение не добавлено" class="d-inline-block w-100 current-img">
+        <img src="{{ $product->oneImage->file_for_view }}" alt="изображение не добавлено" class="d-inline-block w-100 current-img">
         <div>
             @foreach ($product->images as $image)
                 <div class="d-inline-block mt-2" style="width: 32.5%">
