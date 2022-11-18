@@ -5,7 +5,7 @@
 @section('content')
 <div class="bg-white border p-6 row">
     <div class="col-4 p-2">
-        <img src="{{ $product->images[0]->file_for_view }}" alt="изображение не добавлено" class="d-inline-block w-100 current-img">
+        <img src="{{ $product->oneImage->file_for_view }}" alt="изображение не добавлено" class="d-inline-block w-100 current-img">
         <div>
             @foreach ($product->images as $image)
                 <div class="d-inline-block mt-2" style="width: 32.5%">
@@ -35,7 +35,18 @@
                 @endforeach
                 </td>
                 <td class="p-2"><b>In stock:</b>{{ $sku->count }}</td>
-                <td class="p-2"><a href="#" class="btn btn-success">Add in basket</a></td>
+                <td class="p-2">
+                    @if ($sku->count > 0)
+                        <form action="{{ route('intoBasket', $sku) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success" title="add_to_basket">
+                                add_to_basket
+                            </button>
+                        </form>
+                    @else
+                        product is not available
+                    @endif
+                </td>
             </tr>
         @endforeach
         </table>

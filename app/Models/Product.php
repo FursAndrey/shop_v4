@@ -36,4 +36,9 @@ class Product extends Model
     {
         return $this->hasMany(Image::class);
     }
+    
+    public function getOneImageAttribute()
+    {
+        return $this->images[0];
+    }
 }
