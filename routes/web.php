@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\ResetController;
 use App\Http\Controllers\Admin\SkuController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
     Route::get('/reset', [ResetController::class, 'resetProject'])->name('resetProject');
 });
+
+Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
 
 require __DIR__.'/auth.php';

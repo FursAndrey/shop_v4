@@ -35,7 +35,18 @@
                 @endforeach
                 </td>
                 <td class="p-2"><b>In stock:</b>{{ $sku->count }}</td>
-                <td class="p-2"><a href="#" class="btn btn-success">Add in basket</a></td>
+                <td class="p-2">
+                    @if ($sku->count > 0)
+                        <form action="{{ route('intoBasket', $sku) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success" title="add_to_basket">
+                                add_to_basket
+                            </button>
+                        </form>
+                    @else
+                        product is not available
+                    @endif
+                </td>
             </tr>
         @endforeach
         </table>
