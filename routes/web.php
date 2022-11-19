@@ -44,9 +44,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/image/{product}/{image}', [ImageController::class, 'destroyOne'])->name('daleteOneImg');
     Route::get('/reset', [ResetController::class, 'resetProject'])->name('resetProject');
 });
-
-Route::get('/showBasket', [BasketController::class, 'showBasket'])->name('showBasket');
-Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
-Route::post('/fromBasket/{sku}', [BasketController::class, 'fromBasket'])->name('fromBasket');
+Route::group(
+    ['middleware' => 'basketCheck'],
+    function () {
+        Route::get('/showBasket', [BasketController::class, 'showBasket'])->name('showBasket');
+        Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
+        Route::post('/fromBasket/{sku}', [BasketController::class, 'fromBasket'])->name('fromBasket');
+    }
+);
 
 require __DIR__.'/auth.php';
