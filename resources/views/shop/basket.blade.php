@@ -40,7 +40,7 @@
                     <span class="d-inline-block btn btn-secondary" title="btn.not_available">+</span>
                 @endif
                 <span class="ms-3 me-3">{{ $sku->countInBasket }}</span>
-                <form action="#" method="POST" class="d-inline-block">
+                <form action="{{ route('fromBasket', $sku) }}" method="POST" class="d-inline-block">
                     @csrf
                     <button type="submit" class="btn btn-warning" title="btn.remove_from_basket">
                         -

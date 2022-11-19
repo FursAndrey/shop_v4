@@ -45,7 +45,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/reset', [ResetController::class, 'resetProject'])->name('resetProject');
 });
 
-Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
 Route::get('/showBasket', [BasketController::class, 'showBasket'])->name('showBasket');
+Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
+Route::post('/fromBasket/{sku}', [BasketController::class, 'fromBasket'])->name('fromBasket');
 
 require __DIR__.'/auth.php';
