@@ -63,7 +63,7 @@
                 @endforeach
             </td>
             <td>
-                <form action="#" method="POST">
+                <form action="{{ route('removeItFromBasket', $sku) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" title="btn.remove_from_basket">Х</button>
@@ -74,7 +74,7 @@
 </table>
 <p><b>tables.total_price</b> {{ $totalPrice }}BYN</p>
 <a href="#" class="btn btn-success">btn.create_order</a>
-<form action="#" method="POST" class="d-inline-block">
+<form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
     @csrf
     @method('DELETE')
     <button type="submit" class="btn btn-danger" title="btn.clear_basket">

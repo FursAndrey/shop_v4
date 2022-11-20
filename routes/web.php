@@ -49,6 +49,8 @@ Route::group(
     function () {
         Route::get('/showBasket', [BasketController::class, 'showBasket'])->name('showBasket');
         Route::post('/fromBasket/{sku}', [BasketController::class, 'fromBasket'])->name('fromBasket');
+        Route::delete('/removeItFromBasket/{sku}', [BasketController::class, 'removeItFromBasket'])->name('removeItFromBasket');
+        Route::delete('/clearBasket', [BasketController::class, 'clearBasket'])->name('clearBasket');
     }
 );
 Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
