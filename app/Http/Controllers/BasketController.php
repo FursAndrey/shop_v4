@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\AddIntoBasketAction;
-use App\Actions\RemoveFromBasketAction;
+use App\Actions\BasketActions\AddIntoBasketAction;
+use App\Actions\BasketActions\RemoveFromBasketAction;
 use App\Models\Sku;
 
 class BasketController

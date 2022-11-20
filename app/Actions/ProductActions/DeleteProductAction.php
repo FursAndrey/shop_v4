@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\ProductActions;
 
+use App\Actions\ImageActions\DeleteAllImagesAction;
 use App\Models\Product;
 
 class DeleteProductAction

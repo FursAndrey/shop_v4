@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\ResetProjectAction;
+use App\Actions\ResetActions\ResetProjectAction;
 
 class ResetController
 {

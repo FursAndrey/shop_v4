@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\CreateProductAction;
-use App\Actions\DeleteProductAction;
-use App\Actions\UpdateProductAction;
+use App\Actions\ProductActions\CreateProductAction;
+use App\Actions\ProductActions\DeleteProductAction;
+use App\Actions\ProductActions\UpdateProductAction;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
