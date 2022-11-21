@@ -8,11 +8,11 @@ class RemoveItFromBasketAction
 {
     public function __invoke(Sku $sku)
     {
-        $basket = session('basket');
+        $basket = (new GetBasketAction)();
         
         //иначе - удалить
         unset($basket[$sku->id]);
         
-        session(['basket' => $basket]);
+        (new SetBasketAction)($basket);
     }
 }

@@ -8,7 +8,7 @@ class RemoveFromBasketAction
 {
     public function __invoke(Sku $sku)
     {
-        $basket = session('basket');
+        $basket = (new GetBasketAction)();
         if (isset($basket[$sku->id]) && $basket[$sku->id]->countInBasket > 1) {
             //если существует - уменьшить кол-во
             $basket[$sku->id]->countInBasket--;
@@ -16,6 +16,6 @@ class RemoveFromBasketAction
             //иначе - удалить
             unset($basket[$sku->id]);
         }
-        session(['basket' => $basket]);
+        (new SetBasketAction)($basket);
     }
 }

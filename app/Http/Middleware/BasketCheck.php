@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Actions\BasketActions\GetBasketAction;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class BasketCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        $basket = session('basket');
+        $basket = (new GetBasketAction)();
         if (empty($basket)) {
             return redirect()->route('productList');
         }

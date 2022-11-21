@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\BasketActions\AddIntoBasketAction;
 use App\Actions\BasketActions\ClearBasketAction;
+use App\Actions\BasketActions\GetBasketAction;
 use App\Actions\BasketActions\RemoveFromBasketAction;
 use App\Actions\BasketActions\RemoveItFromBasketAction;
 use App\Models\Sku;
@@ -12,7 +13,7 @@ class BasketController
 {
     public function showBasket()
     {
-        $basket = session('basket');
+        $basket = (new GetBasketAction)();
         return view('shop.basket', compact('basket'));
     }
 
