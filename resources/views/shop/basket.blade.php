@@ -1,6 +1,6 @@
 @extends('../../../welcome')
 
-@section('title') products @endsection
+@section('title') Basket @endsection
 
 @section('content')
 <table class="table table-striped table-hover">
@@ -73,7 +73,7 @@
     @endforeach
 </table>
 <p><b>tables.total_price</b> {{ $totalPrice }}BYN</p>
-<a href="#" class="btn btn-success">btn.create_order</a>
+<a href="{{ route('confirmForm') }}" class="btn btn-success">btn.create_order</a>
 <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
     @csrf
     @method('DELETE')
