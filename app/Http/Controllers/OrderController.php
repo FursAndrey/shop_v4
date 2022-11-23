@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\BasketActions\GetBasketAction;
-use Illuminate\Http\Request;
+use App\Http\Requests\ConfirmRequest;
 
 class OrderController
 {
@@ -13,7 +13,7 @@ class OrderController
         return view('shop.confirmOrder', compact('basket'));
     }
 
-    public function confirmOrder()
+    public function confirmOrder(ConfirmRequest $request)
     {
         
     }
