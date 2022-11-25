@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\ProductActions;
 
+use App\Actions\ImageActions\SaveRequestImagesAction;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class UpdateProductAction
+class CreateProductAction
 {
-    public function __invoke(Request $request, Product $product)
+    public function __invoke(Request $request)
     {
-        $product->fill($request->validated())->save();
+        $product = Product::create($request->validated());
         $product->properties()->sync($request->property_id);
 
         $fileNames = (new SaveRequestImagesAction)($request->image);

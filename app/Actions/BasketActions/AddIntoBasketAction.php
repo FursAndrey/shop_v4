@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\BasketActions;
 
 use App\Models\Sku;
 
@@ -8,7 +8,7 @@ class AddIntoBasketAction
 {
     public function __invoke(Sku $sku)
     {
-        $basket = session('basket');
+        $basket = (new GetBasketAction)();
         if (isset($basket[$sku->id])) {
             //если существует - увеличить кол-во
             if ($sku->countInBasket < $sku->count) {
@@ -19,6 +19,6 @@ class AddIntoBasketAction
             $sku->countInBasket = 1;
             $basket[$sku->id] = $sku;
         }
-        session(['basket' => $basket]);
+        (new SetBasketAction)($basket);
     }
 }

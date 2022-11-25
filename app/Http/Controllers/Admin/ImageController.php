@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\DeleteAllImagesAction;
-use App\Actions\DeleteOneImageAction;
+use App\Actions\ImageActions\DeleteAllImagesAction;
+use App\Actions\ImageActions\DeleteOneImageAction;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Product;

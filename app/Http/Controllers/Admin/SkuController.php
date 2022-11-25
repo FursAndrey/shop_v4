@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\DeleteSkuAction;
+use App\Actions\SkuActions\DeleteSkuAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SkuRequest;
 use App\Models\Product;

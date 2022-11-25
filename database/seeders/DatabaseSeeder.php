@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SkuSeeder::class);
         $this->call(OptionSkuSeeder::class);
         $this->call(ImageSeeder::class);
+        $this->call(OrderSeeder::class);
     }
 }

@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\AddIntoBasketAction;
+use App\Actions\BasketActions\AddIntoBasketAction;
+use App\Actions\BasketActions\ClearBasketAction;
+use App\Actions\BasketActions\GetBasketAction;
+use App\Actions\BasketActions\RemoveFromBasketAction;
+use App\Actions\BasketActions\RemoveItFromBasketAction;
 use App\Models\Sku;
 
 class BasketController
 {
+    public function showBasket()
+    {
+        $basket = (new GetBasketAction)();
+        return view('shop.basket', compact('basket'));
+    }
+
     public function intoBasket(Sku $sku)
     {
         (new AddIntoBasketAction)($sku);
@@ -14,9 +24,24 @@ class BasketController
         return redirect()->route('productList');
     }
 
-    public function showBasket()
+    public function fromBasket(Sku $sku)
     {
-        $basket = session('basket');
-        return view('shop.basket', compact('basket'));
+        (new RemoveFromBasketAction)($sku);
+
+        return redirect()->route('productList');
+    }
+
+    public function clearBasket()
+    {
+        (new ClearBasketAction)();
+
+        return redirect()->route('productList');
+    }
+
+    public function removeItFromBasket(Sku $sku)
+    {
+        (new RemoveItFromBasketAction)($sku);
+        
+        return redirect()->route('productList');
     }
 }

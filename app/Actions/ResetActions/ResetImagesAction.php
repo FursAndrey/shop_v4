@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\ResetActions;
 
 use Illuminate\Support\Facades\Storage;
 
