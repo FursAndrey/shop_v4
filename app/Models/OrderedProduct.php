@@ -27,4 +27,15 @@ class OrderedProduct extends Model
     {
         return $this->hasMany(OrderedProperty::class);
     }
+
+    public static function prepareForCreate(Sku $skuFromBasket, int $orderId)
+    {
+        $orderedProduct['sku_id'] = $skuFromBasket->id;
+        $orderedProduct['name_ru'] = $skuFromBasket->product->name_ru;
+        $orderedProduct['name_en'] = $skuFromBasket->product->name_en;
+        $orderedProduct['count'] = $skuFromBasket->countInBasket;
+        $orderedProduct['price_for_once'] = $skuFromBasket->price;
+        $orderedProduct['order_id'] = $orderId;
+        return $orderedProduct;
+    }
 }

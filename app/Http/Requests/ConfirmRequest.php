@@ -27,7 +27,7 @@ class ConfirmRequest extends FormRequest
         $rules = [
             'user_name' => 'required|string|between:3,32',
             'user_email' => ['email'],
-            'description_ru' => 'nullable|string|between:3,200',
+            'description' => 'nullable|string|between:3,200',
         ];
         if (Auth::check()) {
             $this->request->set('user_email', Auth::user()->email);

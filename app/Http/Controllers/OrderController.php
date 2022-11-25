@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\BasketActions\ChangeCountSkuAction;
 use App\Actions\BasketActions\GetBasketAction;
+use App\Actions\BasketActions\GetBasketTotalPriceAction;
+use App\Actions\BasketActions\InvalidCountInBasketAction;
+use App\Actions\BasketActions\UnsetBasketAction;
 use App\Http\Requests\ConfirmRequest;
+use App\Models\Order;
+use App\Models\OrderedProduct;
+use App\Models\OrderedProperty;
 
 class OrderController
 {
@@ -15,6 +22,30 @@ class OrderController
 
     public function confirmOrder(ConfirmRequest $request)
     {
+        $basket = (new GetBasketAction)();
         
+        if ((new InvalidCountInBasketAction)($basket)) {
+            return redirect()->route('showBasket');
+        }
+        (new ChangeCountSkuAction)($basket);
+
+        $confirm = $request->validated();
+        $confirm['total_price'] = (new GetBasketTotalPriceAction)($basket);
+
+        $orderId = (Order::create($confirm))->id;
+        
+        foreach ($basket as $skuInOrder) {
+            $prepareOrderedProduct = OrderedProduct::prepareForCreate($skuInOrder, $orderId);
+            $orderedProductId = (OrderedProduct::create($prepareOrderedProduct))->id;
+
+            foreach ($skuInOrder->options as $option) {
+                $prepareOrderedProperty = OrderedProperty::prepareForCreate($option, $orderedProductId);
+                OrderedProperty::create($prepareOrderedProperty);
+            }
+        }
+
+        (new UnsetBasketAction)();
+        
+        return redirect()->route('productList');
     }
 }
