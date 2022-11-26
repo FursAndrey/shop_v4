@@ -33,7 +33,7 @@
             <select name="product_id" class="form-select" id="product_id">
                 @foreach ($products as $product)
                 <option value="{{ $product->id }}" @selected(old('product_id') == $product->id)>
-                    {{ $product->id }} - {{ $product->name_ru }}/{{ $product->name_en }}
+                    {{ $product->id }} - {{ $product->name }}
                 </option>
                 @endforeach
             </select>

@@ -27,7 +27,6 @@ class Image extends Model
     public function getFileForDeleteAttribute()
     {
         return str_replace('/', '\\', 'storage/uploads/'.$this->file);
-        // return public_path('/storage/uploads/'.str_replace('/', '\\', $this->img));
     }
 
     public function getFileForViewAttribute()

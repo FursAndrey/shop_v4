@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class PageController extends Controller
 {
@@ -19,5 +20,12 @@ class PageController extends Controller
     {
         $product = Product::with(['images', 'skus', 'skus.options', 'skus.options.property'])->find($productId);
         return view('shop.productPage', compact('product'));
+    }
+    
+    public function setLocale($locale)
+    {
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
     }
 }

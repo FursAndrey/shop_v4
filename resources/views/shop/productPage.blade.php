@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="col-8 p-2">
-        <h4 class="mt-2 text-center">{{ $product->name_ru }}/{{ $product->name_en }}</h4>
-        <p>{{ $product->description_ru }}/{{ $product->description_en }}</p>
+        <h4 class="mt-2 text-center">{{ $product->name }}</h4>
+        <p>{{ $product->description }}</p>
         <p><b>SKUS</b></p>
         <table class="w-100">
         @foreach($product->skus as $sku)
@@ -25,10 +25,10 @@
                 <td class="p-2"><b>price:</b>{{ $sku->price }}BYN</td>
                 <td class="p-2">
                 @foreach ($product->properties as $property)
-                    <b>{{ $property->name_ru }}/{{ $property->name_en }}:</b>
+                    <b>{{ $property->name }}:</b>
                     @foreach ($sku->options as $option)
                         @if ($option->property->id == $property->id)
-                            {{ $option->name_ru }}/{{ $option->name_en }}
+                            {{ $option->name }}
                         @endif
                     @endforeach
                     <br/>

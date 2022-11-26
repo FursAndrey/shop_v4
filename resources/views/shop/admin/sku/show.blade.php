@@ -29,10 +29,10 @@
     <tbody>
         <tr>
             <td>{{ $sku->id }}</td>
-            <td>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</td>
+            <td>{{ $sku->product->name }}</td>
             <td>
                 @foreach ($sku->options as $option)
-                    {{ $option->name_ru }}/{{ $option->name_en }}<br/>
+                    {{ $option->name }}<br/>
                 @endforeach
             </td>
             <td>{{ $sku->price }}BYN</td>
