@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Actions\BasketActions\ChangeCountSkuAction;
 use App\Actions\BasketActions\GetBasketAction;
-use App\Actions\BasketActions\GetBasketTotalPriceAction;
 use App\Actions\BasketActions\InvalidCountInBasketAction;
 use App\Actions\BasketActions\UnsetBasketAction;
 use App\Http\Requests\ConfirmRequest;
@@ -29,10 +28,8 @@ class OrderController
         }
         (new ChangeCountSkuAction)($basket);
 
-        $confirm = $request->validated();
-        $confirm['total_price'] = (new GetBasketTotalPriceAction)($basket);
-
-        $orderId = (Order::create($confirm))->id;
+        $prepareOrder = Order::prepareForCreate($request, $basket);
+        $orderId = (Order::create($prepareOrder))->id;
         
         foreach ($basket as $skuInOrder) {
             $prepareOrderedProduct = OrderedProduct::prepareForCreate($skuInOrder, $orderId);

@@ -28,15 +28,15 @@
     <tbody>
         <tr>
             <td>{{ $property->id }}</td>
-            <td>{{ $property->name_ru }} / {{ $property->name_en }}</td>
+            <td>{{ $property->name }}</td>
             <td>
                 @foreach ($property->products as $product)
-                    {{ $product->name_ru }} / {{ $product->name_en }}<br/>
+                    {{ $product->name }}<br/>
                 @endforeach
             </td>
             <td>
                 @foreach ($property->options as $option)
-                    {{ $option->name_ru }} / {{ $option->name_en }}<br/>
+                    {{ $option->name }}<br/>
                 @endforeach
             </td>
             <td>{{ $property->created_at }}<br/>{{ $property->updated_at }}</td>

@@ -26,7 +26,7 @@
             <td>{{ $sku->id }}</td>
             <td>
                 <p><a href="{{ route('productPage', $sku->product) }}"><img src="{{ $sku->product->oneImage->file_for_view }}" alt="изображение не добавлено" style="max-width: 100px;"></a></p>
-                <p><a href="{{ route('productPage', $sku->product) }}" class="btn btn-info">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></p>
+                <p><a href="{{ route('productPage', $sku->product) }}" class="btn btn-info">{{ $sku->product->name }}</a></p>
             </td>
             <td>{{ $sku->price }} BYN</td>
             <td>{{ $priceInBasket }} BYN</td>
@@ -50,11 +50,11 @@
             <td>tables.no_more_than {{ $sku->count }}</td>
             <td>
                 @foreach ($sku->product->properties as $property)
-                    {{ $property->name_ru }}/{{ $property->name_en }}:
+                    {{ $property->name }}:
                     @if(isset($sku->options))
                         @foreach ($sku->options as $option)
                             @if ($option->property->id == $property->id)
-                                {{ $option->name_ru }}/{{ $option->name_en }}<br/>
+                                {{ $option->name }}<br/>
                             @endif
                         @endforeach
                     @else

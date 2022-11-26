@@ -28,10 +28,10 @@
         <tr>
             <td>
                 <a class="btn btn-primary" href="{{ route('option.show', $option->id) }}">
-                    {{ $option->name_ru }} / {{ $option->name_en }}
+                    {{ $option->name }}
                 </a>
             </td>
-            <td>{{ $option->property->name_ru }} / {{ $option->property->name_en }}</td>
+            <td>{{ $option->property->name }}</td>
             <td>
                 @foreach ($option->skus as $sku)
                     {{ $sku->id }}<br/>

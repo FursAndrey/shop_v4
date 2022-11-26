@@ -28,17 +28,17 @@
         <tr>
             <td>
                 <a class="btn btn-primary" href="{{ route('property.show', $property->id) }}">
-                    {{ $property->name_ru }} / {{ $property->name_en }}
+                    {{ $property->name }}
                 </a>
             </td>
             <td>
                 @foreach ($property->products as $product)
-                    {{ $product->name_ru }} / {{ $product->name_en }}<br/>
+                    {{ $product->name }}<br/>
                 @endforeach
             </td>
             <td>
                 @foreach ($property->options as $option)
-                    {{ $option->name_ru }} / {{ $option->name_en }}<br/>
+                    {{ $option->name }}<br/>
                 @endforeach
             </td>
             <td>

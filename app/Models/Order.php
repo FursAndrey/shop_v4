@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Actions\BasketActions\GetBasketTotalPriceAction;
+use App\Http\Requests\ConfirmRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +23,13 @@ class Order extends Model
     public function orderedProducts()
     {
         return $this->hasMany(OrderedProduct::class);
+    }
+
+    public static function prepareForCreate(ConfirmRequest $request, $basket)
+    {
+        $confirm = $request->validated();
+        $confirm['total_price'] = (new GetBasketTotalPriceAction)($basket);
+
+        return $confirm;
     }
 }

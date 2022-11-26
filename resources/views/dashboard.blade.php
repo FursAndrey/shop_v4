@@ -1,7 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
             <a href="{{ route('productList') }}">Shop</a>
             <a href="{{ route('category.index') }}">category</a>
             <a href="{{ route('currency.index') }}">currency</a>
@@ -10,6 +9,8 @@
             <a href="{{ route('option.index') }}">option</a>
             <a href="{{ route('sku.index') }}">sku</a>
             <a href="{{ route('resetProject') }}">reset project</a>
+            <a class="btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a>
+            <a class="btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a>
         </h2>
     </x-slot>
 

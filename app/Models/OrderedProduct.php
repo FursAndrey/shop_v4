@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\dbTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderedProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, dbTranslate;
 
     protected $fillable = [
         'order_id',
@@ -37,5 +38,11 @@ class OrderedProduct extends Model
         $orderedProduct['price_for_once'] = $skuFromBasket->price;
         $orderedProduct['order_id'] = $orderId;
         return $orderedProduct;
+    }
+    
+    public function getNameAttribute()
+    {
+        $fieldName = $this->translate('name');
+        return $this->$fieldName;
     }
 }

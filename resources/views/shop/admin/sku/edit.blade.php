@@ -34,7 +34,7 @@
             <select name="product_id" class="form-select" id="product_id">
                 @foreach ($products as $product)
                 <option value="{{ $product->id }}" @if(null !== old('product_id')) @selected(old('product_id') == $product->id) @else @selected($sku->product_id == $product->id) @endif>
-                    {{ $product->id }} - {{ $product->name_ru }}/{{ $product->name_en }}
+                    {{ $product->id }} - {{ $product->name }}
                 </option>
                 @endforeach
             </select>
@@ -47,11 +47,11 @@
         @endphp
         @foreach ($sku->product->properties as $property)
             <div class="mb-3">
-                <label for="option_id" class="form-label">property {{ $property->name_ru }}/{{ $property->name_en }}</label>
+                <label for="option_id" class="form-label">property {{ $property->name }}</label>
                 <select name="option_id[]" class="form-select" id="option_id">
                     @foreach ($property->options as $option)
                         <option value="{{ $option->id }}" @if(null !== old('option_id')) @selected(old('option_id') == $option->id) @else @selected(in_array($option->id, $sku_options)) @endif>
-                            {{ $option->name_ru }}/{{ $option->name_en }}
+                            {{ $option->name }}
                         </option>
                     @endforeach
                 </select>

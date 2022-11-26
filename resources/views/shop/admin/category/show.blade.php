@@ -26,7 +26,7 @@
     <tbody>
         <tr>
             <td>{{ $category->id }}</td>
-            <td>{{ $category->name_ru }}/{{ $category->name_en }}</td>
+            <td>{{ $category->name }}</td>
             <td>{{ $category->created_at }}<br/>{{ $category->updated_at }}</td>
             <td>
                 <form action="{{ route('category.destroy', $category->id) }}" method="Post">

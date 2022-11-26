@@ -26,7 +26,7 @@
         <tr>
             <td>
                 <a class="btn btn-primary" href="{{ route('category.show', $category->id) }}">
-                    {{ $category->name_ru }}/{{ $category->name_en }}
+                    {{ $category->name }}
                 </a>
             </td>
             <td>
