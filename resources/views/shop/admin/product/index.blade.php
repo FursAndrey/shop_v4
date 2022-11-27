@@ -44,7 +44,7 @@
             </td>
             <td>
                 @foreach ($product->skus as $sku)
-                    #{{ $sku->id }} / {{ $sku->price }}BYN / count:{{ $sku->count }}<br/>
+                    #{{ $sku->id }} / {{ $sku->price }} {{ $sku->CurrencyCode }} / count:{{ $sku->count }}<br/>
                 @endforeach
             </td>
             <td>

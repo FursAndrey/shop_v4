@@ -22,7 +22,7 @@
         @foreach($product->skus as $sku)
             <tr>
                 <td class="p-2">{{ $sku->id }}</td>
-                <td class="p-2"><b>price:</b>{{ $sku->price }}BYN</td>
+                <td class="p-2"><b>price:</b>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
                 <td class="p-2">
                 @foreach ($product->properties as $property)
                     <b>{{ $property->name }}:</b>

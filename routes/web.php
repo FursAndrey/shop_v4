@@ -28,7 +28,7 @@ Route::middleware('setLocale')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     })->name('admin_home');
-    Route::get('/productList/{categpry?}', [PageController::class, 'productListPage'])->name('productList');
+    Route::get('/productList/{category?}', [PageController::class, 'productListPage'])->name('productList');
     Route::get('/productPage/{productId}', [PageController::class, 'productPage'])->name('productPage');
 
     Route::middleware(['auth', 'verified'])->group(function () {
@@ -59,6 +59,7 @@ Route::middleware('setLocale')->group(function () {
     );
     Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
     Route::get('/setLocale/{locale}', [PageController::class, 'setLocale'])->name('setLocale');
+    Route::get('/setCurrency/{currencyCode}', [PageController::class, 'setCurrency'])->name('setCurrency');
 
     require __DIR__.'/auth.php';
 });

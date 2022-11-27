@@ -35,7 +35,7 @@
                     {{ $option->name }}<br/>
                 @endforeach
             </td>
-            <td>{{ $sku->price }}BYN</td>
+            <td>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
             <td>{{ $sku->count }}</td>
             <td>{{ $sku->created_at }}<br/>{{ $sku->updated_at }}</td>
             <td>

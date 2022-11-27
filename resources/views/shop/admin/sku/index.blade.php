@@ -39,7 +39,7 @@
                     {{ $option->name }}<br/>
                 @endforeach
             </td>
-            <td>{{ $sku->price }}BYN</td>
+            <td>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
             <td>{{ $sku->count }}</td>
             <td>
                 <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">

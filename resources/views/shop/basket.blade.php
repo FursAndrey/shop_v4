@@ -28,8 +28,8 @@
                 <p><a href="{{ route('productPage', $sku->product) }}"><img src="{{ $sku->product->oneImage->file_for_view }}" alt="изображение не добавлено" style="max-width: 100px;"></a></p>
                 <p><a href="{{ route('productPage', $sku->product) }}" class="btn btn-info">{{ $sku->product->name }}</a></p>
             </td>
-            <td>{{ $sku->price }} BYN</td>
-            <td>{{ $priceInBasket }} BYN</td>
+            <td>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
+            <td>{{ $priceInBasket }} {{ $sku->CurrencyCode }}</td>
             <td>
                 @if ($sku->countInBasket < $sku->count)
                     <form action="{{ route('intoBasket', $sku) }}" method="POST" class="d-inline-block">
@@ -72,7 +72,7 @@
         </tr>
     @endforeach
 </table>
-<p><b>tables.total_price</b> {{ $totalPrice }}BYN</p>
+<p><b>tables.total_price</b> {{ $totalPrice }} {{ $sku->CurrencyCode }}</p>
 <a href="{{ route('confirmForm') }}" class="btn btn-success">btn.create_order</a>
 <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
     @csrf

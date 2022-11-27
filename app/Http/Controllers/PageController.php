@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Services\Conversion;
 use Illuminate\Support\Facades\App;
 
-class PageController extends Controller
+class PageController
 {
     public function productListPage(Category $category = null)
     {
-        $products = Product::with(['images'])->paginate(8);
+        if (is_null($category)) {
+            $productsQuery = Product::with(['images']);
+        } else {
+            $productsQuery = Product::with(['images'])->where('category_id', '=', $category->id);
+        }
+        $products = $productsQuery->paginate(8);
 
         return view('shop.productList', compact('products'));
     }
@@ -26,6 +31,12 @@ class PageController extends Controller
     {
         session(['locale' => $locale]);
         App::setLocale($locale);
+        return redirect()->back();
+    }
+    
+    public function setCurrency($currencyCode)
+    {
+        Conversion::setCurrencyCode($currencyCode);
         return redirect()->back();
     }
 }
