@@ -30,6 +30,14 @@
                 <a href="{{ route('productList') }}">Shop</a>
                 <a href="{{ route('showBasket') }}">Basket</a>
             </div>
+            @isset($categories)
+                <div style="display: flex; flex-direction: column; margin: 5px; border: 1px solid silver">
+                    <a href="{{ route('productList') }}">all categories</a>
+                    @foreach ($categories as $category)
+                        <a href="{{ route('productList', $category) }}">{{ $category->name }}</a>
+                    @endforeach
+                </div>
+            @endisset
             <div>
                 <a class="btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a>
                 <a class="btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a>

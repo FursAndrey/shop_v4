@@ -11,7 +11,12 @@ class PageController extends Controller
 {
     public function productListPage(Category $category = null)
     {
-        $products = Product::with(['images'])->paginate(8);
+        if (is_null($category)) {
+            $productsQuery = Product::with(['images']);
+        } else {
+            $productsQuery = Product::with(['images'])->where('category_id', '=', $category->id);
+        }
+        $products = $productsQuery->paginate(8);
 
         return view('shop.productList', compact('products'));
     }
