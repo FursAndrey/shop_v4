@@ -59,6 +59,7 @@ Route::middleware('setLocale')->group(function () {
     );
     Route::post('/intoBasket/{sku}', [BasketController::class, 'intoBasket'])->name('intoBasket');
     Route::get('/setLocale/{locale}', [PageController::class, 'setLocale'])->name('setLocale');
+    Route::get('/setCurrency/{currencyCode}', [PageController::class, 'setCurrency'])->name('setCurrency');
 
     require __DIR__.'/auth.php';
 });

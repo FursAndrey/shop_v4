@@ -30,5 +30,11 @@ class ViewServiceProvider extends ServiceProvider
             ],
             'App\ViewComposers\CategoriesComposer'
         );
+        View::composer(
+            [
+                '.........welcome', 
+            ],
+            'App\ViewComposers\CurrenciesComposer'
+        );
     }
 }

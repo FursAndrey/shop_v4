@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Services\Conversion;
 use Illuminate\Support\Facades\App;
 
-class PageController extends Controller
+class PageController
 {
     public function productListPage(Category $category = null)
     {
@@ -31,6 +31,12 @@ class PageController extends Controller
     {
         session(['locale' => $locale]);
         App::setLocale($locale);
+        return redirect()->back();
+    }
+    
+    public function setCurrency($currencyCode)
+    {
+        Conversion::setCurrencyCode($currencyCode);
         return redirect()->back();
     }
 }

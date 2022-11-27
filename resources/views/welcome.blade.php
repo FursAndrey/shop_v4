@@ -30,17 +30,20 @@
                 <a href="{{ route('productList') }}">Shop</a>
                 <a href="{{ route('showBasket') }}">Basket</a>
             </div>
-            @isset($categories)
-                <div style="display: flex; flex-direction: column; margin: 5px; border: 1px solid silver">
-                    <a href="{{ route('productList') }}">all categories</a>
-                    @foreach ($categories as $category)
-                        <a href="{{ route('productList', $category) }}">{{ $category->name }}</a>
-                    @endforeach
-                </div>
-            @endisset
+            <div style="display: flex; flex-direction: column; margin: 5px; border: 1px solid silver">
+                <a href="{{ route('productList') }}">all categories</a>
+                @foreach ($categories as $category)
+                    <a href="{{ route('productList', $category) }}">{{ $category->name }}</a>
+                @endforeach
+            </div>
             <div style="display: flex; flex-direction: column; margin: 5px; border: 1px solid silver">
                 <a href="{{ route('setLocale', 'ru') }}">RU</a>
                 <a href="{{ route('setLocale', 'en') }}">EN</a>
+            </div>
+            <div style="display: flex; flex-direction: column; margin: 5px; border: 1px solid silver">
+                @foreach ($currencies as $currency)
+                    <a href="{{ route('setCurrency', $currency->code) }}">{{ $currency->code }}</a>
+                @endforeach
             </div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
