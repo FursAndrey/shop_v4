@@ -20,6 +20,8 @@ class OrderedProduct extends Model
         'price_for_once',
     ];
 
+    protected static $hitArray = [];
+
     public function order()
     {
         return $this->belongsTo(Order::class);
@@ -47,14 +49,22 @@ class OrderedProduct extends Model
         return $this->$fieldName;
     }
     
-    public static function hitArray()
+    public static function getHitArray()
     {
-        return self::groupBy('sku_id')
-            ->selectRaw('sku_id, sum(count) as count')
-            ->where('created_at', '>=', Carbon::now()->subDays(7))
-            ->orderBy('count', 'DESC')
-            ->take(5)
-            ->get()
-            ->toArray();
+        return self::hitArray();
+    }
+
+    protected static function hitArray()
+    {
+        if (self::$hitArray == []) {
+            self::$hitArray = self::groupBy('sku_id')
+                ->selectRaw('sku_id, sum(count) as count')
+                ->where('created_at', '>=', Carbon::now()->subDays(7))
+                ->orderBy('count', 'DESC')
+                ->take(5)
+                ->get()
+                ->toArray();
+        }
+        return self::$hitArray;
     }
 }

@@ -45,7 +45,7 @@ class Sku extends Model
     
     public function getIsHitAttribute()
     {
-        $hitSkus = OrderedProduct::hitArray();
+        $hitSkus = OrderedProduct::getHitArray();
         
         foreach ($hitSkus as $key => $hit) {
             if ($hit['sku_id'] == $this->id) {
