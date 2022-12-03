@@ -31,6 +31,6 @@ class Image extends Model
 
     public function getFileForViewAttribute()
     {
-        return '/storage/uploads/'.$this->file;
+        return url('/storage/uploads/'.$this->file);
     }
 }
