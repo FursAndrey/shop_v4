@@ -8,6 +8,7 @@
             <a href="{{ route('property.index') }}">property</a>
             <a href="{{ route('option.index') }}">option</a>
             <a href="{{ route('sku.index') }}">sku</a>
+            <a href="{{ route('role.index') }}">role</a>
             <a href="{{ route('resetProject') }}">reset project</a>
             <a class="btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a>
             <a class="btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a>
