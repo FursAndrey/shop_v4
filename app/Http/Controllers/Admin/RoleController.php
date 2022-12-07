@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\RoleRequest;
 use App\Models\Role;
-use Illuminate\Http\Request;
 
 class RoleController
 {
@@ -34,7 +34,7 @@ class RoleController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         Role::create($request->all());
         return redirect()->route('role.index');
@@ -69,7 +69,7 @@ class RoleController
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
         $role->update($request->all());
         return redirect()->route('role.index');
