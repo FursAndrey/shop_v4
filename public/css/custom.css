@@ -1,0 +1,13 @@
+span.succes {
+    background-color: rgb(180 255 186);
+    color: #036a03;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+span.danger {
+    background-color: rgb(255, 185, 185);
+    color: rgb(128, 0, 0);
+    padding: 8px;
+    border-radius: 10px;
+}

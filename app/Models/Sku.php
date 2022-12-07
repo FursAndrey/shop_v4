@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\Conversion;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,5 +35,23 @@ class Sku extends Model
     public function getPriceAttribute($value)
     {
         return Conversion::convert($value);
+    }
+    
+    public function getIsNewAttribute()
+    {
+        $sevenDaysBeforeNow = Carbon::now()->subDays(7);
+        return $sevenDaysBeforeNow <= Carbon::parse($this->attributes['created_at']);
+    }
+    
+    public function getIsHitAttribute()
+    {
+        $hitSkus = OrderedProduct::getHitArray();
+        
+        foreach ($hitSkus as $key => $hit) {
+            if ($hit['sku_id'] == $this->id) {
+                return true;
+            }
+        }
+        return false;
     }
 }

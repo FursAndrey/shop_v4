@@ -2,6 +2,10 @@
 
 @section('title') product @endsection
 
+@section('header_styles')
+<link rel="stylesheet" href="{{ asset("css/custom.css") }}">
+@endsection
+
 @section('content')
 <div class="bg-white border p-6 row">
     <div class="col-4 p-2">
@@ -33,6 +37,14 @@
                     @endforeach
                     <br/>
                 @endforeach
+                </td>
+                <td class="p-2">
+                    @if ($sku->isNew)
+                        <span class="succes">new</span>
+                    @endif
+                    @if ($sku->isHit)
+                        <span class="danger">hit</span>
+                    @endif
                 </td>
                 <td class="p-2"><b>In stock:</b>{{ $sku->count }}</td>
                 <td class="p-2">

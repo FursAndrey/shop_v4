@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\dbTranslate;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,8 @@ class OrderedProduct extends Model
         'count',
         'price_for_once',
     ];
+
+    protected static $hitArray = [];
 
     public function order()
     {
@@ -44,5 +47,24 @@ class OrderedProduct extends Model
     {
         $fieldName = $this->translate('name');
         return $this->$fieldName;
+    }
+    
+    public static function getHitArray()
+    {
+        return self::hitArray();
+    }
+
+    protected static function hitArray()
+    {
+        if (self::$hitArray == []) {
+            self::$hitArray = self::groupBy('sku_id')
+                ->selectRaw('sku_id, sum(count) as count')
+                ->where('created_at', '>=', Carbon::now()->subDays(7))
+                ->orderBy('count', 'DESC')
+                ->take(5)
+                ->get()
+                ->toArray();
+        }
+        return self::$hitArray;
     }
 }
