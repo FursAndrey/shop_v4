@@ -65,4 +65,20 @@ class User extends Authenticatable
         
         return false;
     }
+
+    public function scopeAdmins($query)
+    {
+        $filter = function ($q) {
+            $q->where('role_id', 1);
+        };
+        return $query->whereHas('roles', $filter)->with(['roles' => $filter]);
+    }
+
+    public function scopeSellers($query)
+    {
+        $filter = function ($q) {
+            $q->where('role_id', 2);
+        };
+        return $query->whereHas('roles', $filter)->with(['roles' => $filter]);
+    }
 }
