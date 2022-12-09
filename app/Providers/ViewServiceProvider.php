@@ -27,12 +27,14 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(
             [
                 '.........welcome', 
+                'welcome', 
             ],
             'App\ViewComposers\CategoriesComposer'
         );
         View::composer(
             [
                 '.........welcome', 
+                'welcome', 
             ],
             'App\ViewComposers\CurrenciesComposer'
         );
