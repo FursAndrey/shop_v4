@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\ResetController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkuController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
@@ -38,6 +39,7 @@ Route::middleware('setLocale')->group(function () {
         })->name('dashboard');
         
         Route::resource('/category', CategoriesController::class);
+        Route::resource('/user', UserController::class)->only(['index', 'show', 'edit', 'update', 'destroy']);
         Route::resource('/role', RoleController::class);
         Route::resource('/currency', CurrencyController::class);
         Route::resource('/product', ProductController::class);
