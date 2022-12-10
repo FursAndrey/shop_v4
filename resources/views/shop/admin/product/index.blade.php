@@ -29,9 +29,13 @@
         @foreach ($products as $product)
         <tr>
             <td>
-                <a class="btn btn-primary" href="{{ route('product.show', $product->id) }}">
+                @can('view', $product)
+                    <a class="btn btn-primary" href="{{ route('product.show', $product->id) }}">
+                        {{ $product->name }}
+                    </a>
+                @else
                     {{ $product->name }}
-                </a>
+                @endcan
             </td>
             <td>{{ $product->description }}</td>
             <td>{{ $product->category->name }}</td>
