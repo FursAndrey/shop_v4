@@ -20,8 +20,8 @@
             @can('viewAny', \App\Models\Sku::class)
                 <a href="{{ route('sku.index') }}">sku</a>
             @endcan
-            @can('viewAny', \App\Models\Users::class)
-                <a href="{{ route('user.index') }}">users</a>
+            @can('viewAny', \App\Models\User::class)
+                <a href="{{ route('user.index') }}">user</a>
             @endcan
             @can('viewAny', \App\Models\Role::class)
                 <a href="{{ route('role.index') }}">role</a>
