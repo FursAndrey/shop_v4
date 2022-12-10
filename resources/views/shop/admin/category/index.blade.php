@@ -25,16 +25,24 @@
         @foreach ($categories as $category)
         <tr>
             <td>
-                <a class="btn btn-primary" href="{{ route('category.show', $category->id) }}">
+                @can('view', $category)
+                    <a class="btn btn-primary" href="{{ route('category.show', $category->id) }}">
+                        {{ $category->name }}
+                    </a>
+                @else
                     {{ $category->name }}
-                </a>
+                @endcan
             </td>
             <td>
                 <form action="{{ route('category.destroy', $category->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('category.edit', $category->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $category)
+                        <a class="btn btn-primary" href="{{ route('category.edit', $category->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $category)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

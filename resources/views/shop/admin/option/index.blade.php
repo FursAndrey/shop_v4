@@ -27,9 +27,13 @@
         @foreach ($options as $option)
         <tr>
             <td>
-                <a class="btn btn-primary" href="{{ route('option.show', $option->id) }}">
+                @can('view', $option)
+                    <a class="btn btn-primary" href="{{ route('option.show', $option->id) }}">
+                        {{ $option->name }}
+                    </a>
+                @else
                     {{ $option->name }}
-                </a>
+                @endcan
             </td>
             <td>{{ $option->property->name }}</td>
             <td>
@@ -39,10 +43,14 @@
             </td>
             <td>
                 <form action="{{ route('option.destroy', $option->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $option)
+                        <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $option)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

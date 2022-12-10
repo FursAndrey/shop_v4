@@ -10,6 +10,11 @@ use App\Models\Sku;
 
 class SkuController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Sku::class, 'sku');
+    }
+    
     /**
      * Display a listing of the resource.
      *

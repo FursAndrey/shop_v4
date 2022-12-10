@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Currency::class, 'currency');
+    }
+
     /**
      * Display a listing of the resource.
      *

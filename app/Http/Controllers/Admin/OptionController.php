@@ -9,6 +9,11 @@ use App\Models\Property;
 
 class OptionController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Option::class, 'option');
+    }
+    
     /**
      * Display a listing of the resource.
      *

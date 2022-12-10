@@ -20,7 +20,13 @@
         </tr>
         @foreach ($users as $user)
             <tr>
-                <td><a href="{{ route('user.show', $user) }}" class="btn btn-info">{{ $user->name }}</a></td>
+                <td>
+                    @can('view', $user)
+                        <a href="{{ route('user.show', $user) }}" class="btn btn-info">{{ $user->name }}</a>
+                    @else
+                        {{ $user->name }}
+                    @endcan
+                </td>
                 <td>{{ $user->email }}</td>
                 <td>
                     @foreach ($user->roles as $role)
@@ -29,10 +35,14 @@
                 </td>
                 <td>
                     <form action="{{ route('user.destroy', $user) }}" method="Post">
-                        <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Edit roles</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        @can('update', $user)
+                            <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Edit roles</a>
+                        @endcan
+                        @can('delete', $user)
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        @endcan
                     </form>
                 </td>
             </tr>

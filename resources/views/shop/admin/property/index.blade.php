@@ -27,9 +27,13 @@
         @foreach ($properties as $property)
         <tr>
             <td>
-                <a class="btn btn-primary" href="{{ route('property.show', $property->id) }}">
+                @can('view', $property)
+                    <a class="btn btn-primary" href="{{ route('property.show', $property->id) }}">
+                        {{ $property->name }}
+                    </a>
+                @else
                     {{ $property->name }}
-                </a>
+                @endcan
             </td>
             <td>
                 @foreach ($property->products as $product)
@@ -43,10 +47,14 @@
             </td>
             <td>
                 <form action="{{ route('property.destroy', $property->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('property.edit', $property->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $property)
+                        <a class="btn btn-primary" href="{{ route('property.edit', $property->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $property)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>
