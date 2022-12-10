@@ -32,10 +32,14 @@
             <td>{{ $role->created_at }}<br/>{{ $role->updated_at }}</td>
             <td>
                 <form action="{{ route('role.destroy', $role->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $role)
+                        <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $role)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

@@ -8,6 +8,11 @@ use App\Models\Property;
 
 class PropertyController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Property::class, 'property');
+    }
+    
     /**
      * Display a listing of the resource.
      *

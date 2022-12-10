@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use App\Models\Role;
 
-class RoleController
+class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Role::class, 'role');
+    }
+    
     /**
      * Display a listing of the resource.
      *

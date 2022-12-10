@@ -38,10 +38,14 @@
             <td>{{ $option->created_at }}<br/>{{ $option->updated_at }}</td>
             <td>
                 <form action="{{ route('option.destroy', $option->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $option)
+                        <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $option)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

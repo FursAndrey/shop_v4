@@ -32,10 +32,14 @@
             <td>{{ $currency->created_at }}<br/>{{ $currency->updated_at }}</td>
             <td>
                 <form action="{{ route('currency.destroy', $currency->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $currency)
+                        <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $currency)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

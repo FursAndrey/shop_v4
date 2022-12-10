@@ -40,10 +40,14 @@
             <td>{{ $sku->created_at }}<br/>{{ $sku->updated_at }}</td>
             <td>
                 <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $sku)
+                        <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $sku)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

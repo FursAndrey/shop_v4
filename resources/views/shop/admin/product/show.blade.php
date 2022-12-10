@@ -19,8 +19,7 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">name</th>
-            <th scope="col">description_ru</th>
-            <th scope="col">description_en</th>
+            <th scope="col">description</th>
             <th scope="col">category</th>
             <th scope="col">properties</th>
             <th scope="col">skus</th>
@@ -31,13 +30,12 @@
     <tbody>
         <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->name_ru }} / {{ $product->name_en }}</td>
-            <td>{{ $product->description_ru }}</td>
-            <td>{{ $product->description_en }}</td>
-            <td>{{ $product->category->name_ru }}/{{ $product->category->name_en }}</td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->description }}</td>
+            <td>{{ $product->category->name }}</td>
             <td>
                 @foreach ($product->properties as $property)
-                    {{ $property->name_ru }} / {{ $property->name_en }}<br/>
+                    {{ $property->name }}<br/>
                 @endforeach
             </td>
             <td>
@@ -48,10 +46,14 @@
             <td>{{ $product->created_at }}<br/>{{ $product->updated_at }}</td>
             <td>
                 <form action="{{ route('product.destroy', $product->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('product.edit', $product->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $product)
+                        <a class="btn btn-primary" href="{{ route('product.edit', $product->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $product)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

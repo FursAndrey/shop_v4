@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Category::class, 'category');
+    }
+
     /**
      * Display a listing of the resource.
      *

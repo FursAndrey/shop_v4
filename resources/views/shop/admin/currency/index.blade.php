@@ -26,17 +26,25 @@
         @foreach ($currencies as $currency)
         <tr>
             <td>
-                <a class="btn btn-primary" href="{{ route('currency.show', $currency->id) }}">
+                @can('view', $currency)
+                    <a class="btn btn-primary" href="{{ route('currency.show', $currency->id) }}">
+                        {{ $currency->code }}
+                    </a>
+                @else
                     {{ $currency->code }}
-                </a>
+                @endcan
             </td>
             <td>{{ $currency->rate }}</td>
             <td>
                 <form action="{{ route('currency.destroy', $currency->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @can('update', $currency)
+                        <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $currency)
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>
