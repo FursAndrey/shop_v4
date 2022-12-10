@@ -28,5 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('delete-image', function(User $user) {
+            return $user->hasAnyRole('admin');
+        });
+        
+        Gate::define('reset-project', function(User $user) {
+            return $user->hasAnyRole('admin');
+        });
     }
 }
