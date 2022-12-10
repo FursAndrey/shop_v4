@@ -18,7 +18,7 @@ class CurrencyPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasAnyRole(['seller', 'admin']);
+        return $user->hasAnyRole('admin');
     }
 
     /**
