@@ -5,7 +5,7 @@
 @section('content')
 <h1>Add sku</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('sku.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('sku.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('sku.store') }}" method="POST" enctype="multipart/form-data">
     @csrf

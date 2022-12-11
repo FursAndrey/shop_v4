@@ -5,7 +5,7 @@
 @section('content')
 <h1>Edit property</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('property.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('property.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('property.update', $property->id) }}" method="POST" enctype="multipart/form-data">
     @csrf

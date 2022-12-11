@@ -5,7 +5,7 @@
 @section('content')
 <h1>skus</h1>
 <div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('sku.create') }}"> Create skus</a>
+    <x-my.a.success href="{{ route('sku.create') }}">Create sku</x-my.a.success>
 </div>
 
 @if ($message = Session::get('success'))
@@ -27,9 +27,9 @@
         <x-my.table.tr>
             <x-my.table.td>
                 @can('view', $sku)
-                    <a class="btn btn-primary" href="{{ route('sku.show', $sku->id) }}">
+                    <x-my.a.primary href="{{ route('sku.show', $sku->id) }}">
                         {{ $sku->id }}
-                    </a>
+                    </x-my.a.primary>
                 @else
                     {{ $sku->id }}
                 @endcan
@@ -45,7 +45,7 @@
             <x-my.table.td>
                 <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">
                     @can('update', $sku)
-                        <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
+                        <x-my.a.primary href="{{ route('sku.edit', $sku->id) }}">Edit</x-my.a.primary>
                     @endcan
                     @can('delete', $sku)
                         @csrf

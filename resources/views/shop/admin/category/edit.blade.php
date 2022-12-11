@@ -5,7 +5,7 @@
 @section('content')
 <h1>Edit category</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('category.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
     @csrf

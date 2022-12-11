@@ -5,7 +5,7 @@
 @section('content')
 <h1>option</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('option.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('option.index') }}">Back</x-my.a.primary>
 </div>
 
 <x-my.table>
@@ -32,7 +32,7 @@
         <x-my.table.td>
             <form action="{{ route('option.destroy', $option->id) }}" method="Post">
                 @can('update', $option)
-                    <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
+                    <x-my.a.primary href="{{ route('option.edit', $option->id) }}">Edit</x-my.a.primary>
                 @endcan
                 @can('delete', $option)
                     @csrf

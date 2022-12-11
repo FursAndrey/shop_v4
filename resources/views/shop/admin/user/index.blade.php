@@ -36,7 +36,7 @@
                 <x-my.table.td>
                     <form action="{{ route('user.destroy', $user) }}" method="Post">
                         @can('update', $user)
-                            <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Edit roles</a>
+                            <x-my.a.primary href="{{ route('user.edit', $user->id) }}">Edit roles</x-my.a.primary>
                         @endcan
                         @can('delete', $user)
                             @csrf
