@@ -15,7 +15,7 @@
                 <strong>currency code:</strong>
                 <input type="text" name="code" value="{{ old('name_ru') }}" class="form-control" placeholder="currency code">
                 @error('code')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <strong>currency rate:</strong>
                 <input type="text" name="rate" value="{{ old('rate') }}" class="form-control" placeholder="currency rate">
                 @error('rate')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
