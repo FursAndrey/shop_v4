@@ -15,7 +15,7 @@
                 <strong>role name_ru:</strong>
                 <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control" placeholder="role name_ru">
                 @error('name_ru')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -24,21 +24,21 @@
                 <strong>role name_en:</strong>
                 <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control" placeholder="role name_en">
                 @error('name_en')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
         <div class="mb-3">
             <label for="description_ru" class="form-label">description_ru</label>
             @error('description_ru')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
             <textarea class="form-control" id="description_ru" name="description_ru" rows="3">{{ old('description_ru') }}</textarea>
         </div>
         <div class="mb-3">
             <label for="description_en" class="form-label">description_en</label>
             @error('description_en')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
             <textarea class="form-control" id="description_en" name="description_en" rows="3">{{ old('description_en') }}</textarea>
         </div>

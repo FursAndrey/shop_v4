@@ -9,9 +9,7 @@
 </div>
 
 @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
+    <x-my.alert.success>{{ $message }}</x-my.alert.success>
 @endif
 
 <x-my.table>

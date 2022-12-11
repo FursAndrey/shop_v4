@@ -15,7 +15,7 @@
                 <strong>product name_ru:</strong>
                 <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control" placeholder="product name_ru">
                 @error('name_ru')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <strong>product name_en:</strong>
                 <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control" placeholder="product name_en">
                 @error('name_en')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <strong>product description_ru:</strong>
                 <textarea class="form-control" id="description_ru" name="description_ru" rows="3">{{ old('description_ru') }}</textarea>
                 @error('description_ru')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <strong>product description_en:</strong>
                 <textarea class="form-control" id="description_en" name="description_en" rows="3">{{ old('description_en') }}</textarea>
                 @error('description_en')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -56,7 +56,7 @@
                 @endforeach
             </select>
             @error('category_id')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
         <div class="mb-3">
@@ -69,7 +69,7 @@
                 @endforeach
             </select>
             @error('property_id')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -77,7 +77,7 @@
                 <strong>product image:</strong>
                 <input multiple="multiple" name="image[]" type="file" class="form-control">
                 @error('image')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>

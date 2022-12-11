@@ -25,7 +25,7 @@
                 @endforeach
             </select>
             @error('role_id')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <x-my.alert.danger>{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>

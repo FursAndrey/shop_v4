@@ -15,7 +15,7 @@
                 <strong>sku price:</strong>
                 <input type="text" name="price" value="{{ old('price') }}" class="form-control" placeholder="sku price">
                 @error('price')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <strong>sku count:</strong>
                 <input type="text" name="count" value="{{ old('count') }}" class="form-control" placeholder="sku count">
                 @error('count')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -38,7 +38,7 @@
                 @endforeach
             </select>
             @error('product_id')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>

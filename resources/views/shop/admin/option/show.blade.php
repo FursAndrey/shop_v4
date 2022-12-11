@@ -8,12 +8,6 @@
     <a class="btn btn-primary" href="{{ route('option.index') }}"> Back</a>
 </div>
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
 <x-my.table>
     <x-slot name="thead">
         <x-my.table.tr>

@@ -15,7 +15,7 @@
                 <strong>category name_ru:</strong>
                 <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control" placeholder="category name_ru">
                 @error('name_ru')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <strong>category name_en:</strong>
                 <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control" placeholder="category name_en">
                 @error('name_en')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>

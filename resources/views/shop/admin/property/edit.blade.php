@@ -16,7 +16,7 @@
                 <strong>property name_ru:</strong>
                 <input type="text" name="name_ru" value="@if(null !== old('name_ru')){{ old('name_ru') }}@else{{ $property->name_ru }}@endif" class="form-control" placeholder="property name_ru">
                 @error('name_ru')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <strong>property name_en:</strong>
                 <input type="text" name="name_en" value="@if(null !== old('name_en')){{ old('name_en') }}@else{{ $property->name_en }}@endif" class="form-control" placeholder="property name_en">
                 @error('name_en')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
                 @enderror
             </div>
         </div>
