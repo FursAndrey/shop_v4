@@ -42,7 +42,7 @@
                     @can('delete', $role)
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <x-my.btn.danger>Delete</x-my.btn.danger>
                     @endcan
                 </form>
             </x-my.table.td>

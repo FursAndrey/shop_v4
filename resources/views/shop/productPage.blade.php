@@ -51,9 +51,7 @@
                     @if ($sku->count > 0)
                         <form action="{{ route('intoBasket', $sku) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-success" title="add_to_basket">
-                                add_to_basket
-                            </button>
+                            <x-my.btn.success title="add_to_basket">add_to_basket</x-my.btn.success>
                         </form>
                     @else
                         product is not available
