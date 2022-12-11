@@ -5,7 +5,7 @@
 @section('content')
 <h1>Edit option</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('option.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('option.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('option.update', $option->id) }}" method="POST" enctype="multipart/form-data">
     @csrf

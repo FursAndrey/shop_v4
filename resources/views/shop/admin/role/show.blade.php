@@ -5,7 +5,7 @@
 @section('content')
 <h1>role</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('role.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('role.index') }}">Back</x-my.a.primary>
 </div>
 
 <x-my.table>
@@ -26,7 +26,7 @@
         <x-my.table.td>
             <form action="{{ route('role.destroy', $role->id) }}" method="Post">
                 @can('update', $role)
-                    <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
+                    <x-my.a.primary href="{{ route('role.edit', $role->id) }}">Edit</x-my.a.primary>
                 @endcan
                 @can('delete', $role)
                     @csrf

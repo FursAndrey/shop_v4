@@ -5,7 +5,7 @@
 @section('content')
 <h1>roles</h1>
 <div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('role.create') }}"> Create roles</a>
+    <x-my.a.success href="{{ route('role.create') }}">Create role</x-my.a.success>
 </div>
 
 @if ($message = Session::get('success'))
@@ -24,9 +24,9 @@
         <x-my.table.tr>
             <x-my.table.td>
                 @can('view', $role)
-                    <a class="btn btn-primary" href="{{ route('role.show', $role->id) }}">
+                    <x-my.a.primary href="{{ route('role.show', $role->id) }}">
                         {{ $role->name }}
-                    </a>
+                    </x-my.a.primary>
                 @else
                     {{ $role->name }}
                 @endcan
@@ -37,7 +37,7 @@
             <x-my.table.td>
                 <form action="{{ route('role.destroy', $role->id) }}" method="Post">
                     @can('update', $role)
-                        <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
+                        <x-my.a.primary href="{{ route('role.edit', $role->id) }}">Edit</x-my.a.primary>
                     @endcan
                     @can('delete', $role)
                         @csrf

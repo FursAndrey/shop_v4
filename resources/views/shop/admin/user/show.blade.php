@@ -4,7 +4,7 @@
 
 @section('content')
     <h2>user {{ $user->name }}</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('user.index') }}">return_to_users</a>
+    <x-my.a.success class="mt-2 mb-2" href="{{ route('user.index') }}">return_to_users</x-my.a.success>
     <x-my.table>
         <x-slot name="thead">
             <x-my.table.tr>
@@ -25,7 +25,7 @@
             <x-my.table.td>
                 <form action="{{ route('user.destroy', $user) }}" method="Post">
                     @can('update', $user)
-                        <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Edit roles</a>
+                        <x-my.a.primary href="{{ route('user.edit', $user->id) }}">Edit roles</x-my.a.primary>
                     @endcan
                     @can('delete', $user)
                         @csrf

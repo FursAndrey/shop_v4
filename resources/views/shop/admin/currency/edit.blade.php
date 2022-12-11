@@ -5,7 +5,7 @@
 @section('content')
 <h1>Edit currency</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('currency.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('currency.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('currency.update', $currency->id) }}" method="POST" enctype="multipart/form-data">
     @csrf

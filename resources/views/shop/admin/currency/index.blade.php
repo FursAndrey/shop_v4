@@ -5,7 +5,7 @@
 @section('content')
 <h1>currencies</h1>
 <div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('currency.create') }}"> Create currencies</a>
+    <x-my.a.success href="{{ route('currency.create') }}">Create currency</x-my.a.success>
 </div>
 
 @if ($message = Session::get('success'))
@@ -24,9 +24,9 @@
         <x-my.table.tr>
             <x-my.table.td>
                 @can('view', $currency)
-                    <a class="btn btn-primary" href="{{ route('currency.show', $currency->id) }}">
+                    <x-my.a.primary href="{{ route('currency.show', $currency->id) }}">
                         {{ $currency->code }}
-                    </a>
+                    </x-my.a.primary>
                 @else
                     {{ $currency->code }}
                 @endcan
@@ -35,7 +35,7 @@
             <x-my.table.td>
                 <form action="{{ route('currency.destroy', $currency->id) }}" method="Post">
                     @can('update', $currency)
-                        <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
+                        <x-my.a.primary href="{{ route('currency.edit', $currency->id) }}">Edit</x-my.a.primary>
                     @endcan
                     @can('delete', $currency)
                         @csrf

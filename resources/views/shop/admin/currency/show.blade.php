@@ -5,7 +5,7 @@
 @section('content')
 <h1>currency</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('currency.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('currency.index') }}">Back</x-my.a.primary>
 </div>
 
 <x-my.table>
@@ -26,7 +26,7 @@
         <x-my.table.td>
             <form action="{{ route('currency.destroy', $currency->id) }}" method="Post">
                 @can('update', $currency)
-                    <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
+                    <x-my.a.primary href="{{ route('currency.edit', $currency->id) }}">Edit</x-my.a.primary>
                 @endcan
                 @can('delete', $currency)
                     @csrf

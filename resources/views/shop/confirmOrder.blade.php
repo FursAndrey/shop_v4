@@ -37,8 +37,8 @@
             </div>
             @csrf
             <x-my.btn.success>confirm_order</x-my.btn.success>
-            <a class="btn btn-warning" href="{{ route('showBasket') }}">basket</a>
-            <a class="btn btn-warning" href="{{ route('productList') }}">home</a>
+            <x-my.a.warning href="{{ route('showBasket') }}">basket</x-my.a.warning>
+            <x-my.a.warning href="{{ route('productList') }}">home</x-my.a.warning>
         </form>
     </div>
 @endsection

@@ -29,8 +29,8 @@
             @can('reset-project', \App\Models\Image::class)
                 <a href="{{ route('resetProject') }}">reset project</a>
             @endcan
-            <a class="btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a>
-            <a class="btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a>
+            <x-my.a.info href="{{ route('setLocale', 'ru') }}">RU</x-my.a.info>
+            <x-my.a.info href="{{ route('setLocale', 'en') }}">EN</x-my.a.info>
         </h2>
     </x-slot>
 

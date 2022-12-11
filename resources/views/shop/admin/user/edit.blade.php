@@ -5,7 +5,7 @@
 @section('content')
 <h1>Edit user</h1>
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('user.index') }}"> Back</a>
+    <x-my.a.primary href="{{ route('user.index') }}">Back</x-my.a.primary>
 </div>
 <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data">
     @csrf
