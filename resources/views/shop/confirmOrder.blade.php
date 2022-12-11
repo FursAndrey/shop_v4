@@ -27,9 +27,6 @@
                 </div>
             @endguest
             <div class="mb-4">
-                @error('description')
-                    <div class="alert alert-danger p-3">{{ $message }}</div>
-                @enderror
                 <div>
                     <label for="description" class="form-label col-12">description</label>
                     @error('description')
