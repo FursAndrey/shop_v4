@@ -34,7 +34,7 @@
                 @if ($sku->countInBasket < $sku->count)
                     <form action="{{ route('intoBasket', $sku) }}" method="POST" class="d-inline-block">
                         @csrf
-                        <button type="submit" class="btn btn-success" title="btn.add_to_basket">+</button>
+                        <x-my.btn.success title="add_to_basket">+</x-my.btn.success>
                     </form>
                 @else
                     <span class="d-inline-block btn btn-secondary" title="btn.not_available">+</span>
@@ -42,9 +42,7 @@
                 <span class="ms-3 me-3">{{ $sku->countInBasket }}</span>
                 <form action="{{ route('fromBasket', $sku) }}" method="POST" class="d-inline-block">
                     @csrf
-                    <button type="submit" class="btn btn-warning" title="btn.remove_from_basket">
-                        -
-                    </button>
+                    <x-my.btn.warning title="remove_from_basket">-</x-my.btn.warning>
                 </form>
             </td>
             <td>tables.no_more_than {{ $sku->count }}</td>
@@ -66,7 +64,7 @@
                 <form action="{{ route('removeItFromBasket', $sku) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" title="btn.remove_from_basket">Х</button>
+                    <x-my.btn.danger title="btn.remove_from_basket">X</x-my.btn.danger>
                 </form>
             </td>
         </tr>
@@ -77,8 +75,6 @@
 <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-danger" title="btn.clear_basket">
-        btn.clear_basket
-    </button>
+    <x-my.btn.danger title="btn.clear_basket">btn.clear_basket</x-my.btn.danger>
 </form>
 @endsection

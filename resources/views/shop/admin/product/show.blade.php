@@ -45,7 +45,7 @@
                 @can('delete', $product)
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <x-my.btn.danger>Delete</x-my.btn.danger>
                 @endcan
             </form>
         </x-my.table.td>
@@ -55,7 +55,7 @@
     <x-slot name="thead">
         <x-my.table.tr>
             <x-my.table.th>images</x-my.table.th>
-            <x-my.table.th class="w-25">***</x-my.table.th>
+            <x-my.table.th class="w-25"></x-my.table.th>
         </x-my.table.tr>
     </x-slot>
     <x-my.table.tr>
@@ -67,7 +67,7 @@
                         <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-circle">X</button>
+                            <x-my.btn.danger class="rounded-circle">X</x-my.btn.danger>
                         </form>
                     @endcan
                 </div>
@@ -78,7 +78,7 @@
                 <form action="{{ route('daleteAllImg', $product->id) }}" method="Post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete all images</button>
+                    <x-my.btn.danger>Delete all images</x-my.btn.danger>
                 </form>
             @endcan
         </x-my.table.td>

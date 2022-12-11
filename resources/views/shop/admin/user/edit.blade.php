@@ -28,7 +28,7 @@
                 <x-my.alert.danger>{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <x-my.btn.primary class="mt-3">Submit</x-my.btn.primary>
     </div>
 </form>
 @endsection

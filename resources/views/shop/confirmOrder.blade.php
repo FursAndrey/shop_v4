@@ -36,7 +36,7 @@
                 </div>
             </div>
             @csrf
-            <button type="submit" class="btn btn-success">confirm_order</button>
+            <x-my.btn.success>confirm_order</x-my.btn.success>
             <a class="btn btn-warning" href="{{ route('showBasket') }}">basket</a>
             <a class="btn btn-warning" href="{{ route('productList') }}">home</a>
         </form>

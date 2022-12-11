@@ -42,7 +42,7 @@
             @enderror
             <textarea class="form-control" id="description_en" name="description_en" rows="3">{{ old('description_en') }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <x-my.btn.primary class="mt-3">Submit</x-my.btn.primary>
     </div>
 </form>
 @endsection

@@ -43,7 +43,7 @@
             @enderror
             <textarea class="form-control" id="description_en" name="description_en" rows="3">@if(null !== old('description_en')){{ old('description_en') }}@else{{ $role->description_en }}@endif</textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <x-my.btn.primary class="mt-3">Submit</x-my.btn.primary>
     </div>
 </form>
 @endsection
