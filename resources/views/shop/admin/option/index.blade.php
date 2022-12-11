@@ -14,19 +14,18 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col">properties</th>
-            <th scope="col">skus</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($options as $option)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>properties</x-my.table.th>
+            <x-my.table.th>skus</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($options as $option)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $option)
                     <a class="btn btn-primary" href="{{ route('option.show', $option->id) }}">
                         {{ $option->name }}
@@ -34,14 +33,14 @@
                 @else
                     {{ $option->name }}
                 @endcan
-            </td>
-            <td>{{ $option->property->name }}</td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>{{ $option->property->name }}</x-my.table.td>
+            <x-my.table.td>
                 @foreach ($option->skus as $sku)
                     {{ $sku->id }}<br/>
                 @endforeach
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('option.destroy', $option->id) }}" method="Post">
                     @can('update', $option)
                         <a class="btn btn-primary" href="{{ route('option.edit', $option->id) }}">Edit</a>
@@ -52,11 +51,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $options->links() !!}
 
 @endsection

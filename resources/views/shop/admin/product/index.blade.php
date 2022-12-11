@@ -14,21 +14,20 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col">description</th>
-            <th scope="col">category</th>
-            <th scope="col">properties</th>
-            <th scope="col">skus</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($products as $product)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>description</x-my.table.th>
+            <x-my.table.th>category</x-my.table.th>
+            <x-my.table.th>properties</x-my.table.th>
+            <x-my.table.th>skus</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($products as $product)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $product)
                     <a class="btn btn-primary" href="{{ route('product.show', $product->id) }}">
                         {{ $product->name }}
@@ -36,20 +35,20 @@
                 @else
                     {{ $product->name }}
                 @endcan
-            </td>
-            <td>{{ $product->description }}</td>
-            <td>{{ $product->category->name }}</td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>{{ $product->description }}</x-my.table.td>
+            <x-my.table.td>{{ $product->category->name }}</x-my.table.td>
+            <x-my.table.td>
                 @foreach ($product->properties as $property)
                     {{ $property->name }}<br/>
                 @endforeach
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 @foreach ($product->skus as $sku)
                     #{{ $sku->id }} / {{ $sku->price }} {{ $sku->CurrencyCode }} / count:{{ $sku->count }}<br/>
                 @endforeach
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('product.destroy', $product->id) }}" method="Post">
                     @can('update', $product)
                         <a class="btn btn-primary" href="{{ route('product.edit', $product->id) }}">Edit</a>
@@ -60,11 +59,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $products->links() !!}
 
 @endsection

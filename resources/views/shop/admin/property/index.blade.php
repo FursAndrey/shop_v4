@@ -14,19 +14,18 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col">products</th>
-            <th scope="col">options</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($properties as $property)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>products</x-my.table.th>
+            <x-my.table.th>options</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($properties as $property)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $property)
                     <a class="btn btn-primary" href="{{ route('property.show', $property->id) }}">
                         {{ $property->name }}
@@ -34,18 +33,18 @@
                 @else
                     {{ $property->name }}
                 @endcan
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 @foreach ($property->products as $product)
                     {{ $product->name }}<br/>
                 @endforeach
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 @foreach ($property->options as $option)
                     {{ $option->name }}<br/>
                 @endforeach
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('property.destroy', $property->id) }}" method="Post">
                     @can('update', $property)
                         <a class="btn btn-primary" href="{{ route('property.edit', $property->id) }}">Edit</a>
@@ -56,11 +55,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $properties->links() !!}
 
 @endsection

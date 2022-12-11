@@ -14,18 +14,17 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col">description</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($roles as $role)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>description</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($roles as $role)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $role)
                     <a class="btn btn-primary" href="{{ route('role.show', $role->id) }}">
                         {{ $role->name }}
@@ -33,11 +32,11 @@
                 @else
                     {{ $role->name }}
                 @endcan
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 {{ $role->description }}
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('role.destroy', $role->id) }}" method="Post">
                     @can('update', $role)
                         <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
@@ -48,11 +47,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $roles->links() !!}
 
 @endsection

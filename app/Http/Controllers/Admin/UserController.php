@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+        $users = User::with(['roles'])->paginate(15);
         return view('shop.admin.user.index', compact('users'));
     }
     

@@ -14,18 +14,17 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">code</th>
-            <th scope="col">rate</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($currencies as $currency)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>code</x-my.table.th>
+            <x-my.table.th>rate</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($currencies as $currency)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $currency)
                     <a class="btn btn-primary" href="{{ route('currency.show', $currency->id) }}">
                         {{ $currency->code }}
@@ -33,9 +32,9 @@
                 @else
                     {{ $currency->code }}
                 @endcan
-            </td>
-            <td>{{ $currency->rate }}</td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>{{ $currency->rate }}</x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('currency.destroy', $currency->id) }}" method="Post">
                     @can('update', $currency)
                         <a class="btn btn-primary" href="{{ route('currency.edit', $currency->id) }}">Edit</a>
@@ -46,11 +45,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $currencies->links() !!}
 
 @endsection

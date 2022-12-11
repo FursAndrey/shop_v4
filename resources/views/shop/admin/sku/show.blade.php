@@ -14,44 +14,42 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">product</th>
-            <th scope="col">options</th>
-            <th scope="col">price</th>
-            <th scope="col">count</th>
-            <th scope="col">created/<br/>updated</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ $sku->id }}</td>
-            <td>{{ $sku->product->name }}</td>
-            <td>
-                @foreach ($sku->options as $option)
-                    {{ $option->name }}<br/>
-                @endforeach
-            </td>
-            <td>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
-            <td>{{ $sku->count }}</td>
-            <td>{{ $sku->created_at }}<br/>{{ $sku->updated_at }}</td>
-            <td>
-                <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">
-                    @can('update', $sku)
-                        <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
-                    @endcan
-                    @can('delete', $sku)
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>id</x-my.table.th>
+            <x-my.table.th>product</x-my.table.th>
+            <x-my.table.th>options</x-my.table.th>
+            <x-my.table.th>price</x-my.table.th>
+            <x-my.table.th>count</x-my.table.th>
+            <x-my.table.th>created/<br/>updated</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    <x-my.table.tr>
+        <x-my.table.td>{{ $sku->id }}</x-my.table.td>
+        <x-my.table.td>{{ $sku->product->name }}</x-my.table.td>
+        <x-my.table.td>
+            @foreach ($sku->options as $option)
+                {{ $option->name }}<br/>
+            @endforeach
+        </x-my.table.td>
+        <x-my.table.td>{{ $sku->price }} {{ $sku->CurrencyCode }}</x-my.table.td>
+        <x-my.table.td>{{ $sku->count }}</x-my.table.td>
+        <x-my.table.td>{{ $sku->created_at }}<br/>{{ $sku->updated_at }}</x-my.table.td>
+        <x-my.table.td>
+            <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">
+                @can('update', $sku)
+                    <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
+                @endcan
+                @can('delete', $sku)
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                @endcan
+            </form>
+        </x-my.table.td>
+    </x-my.table.tr>
+</x-my.table>
 
 @endsection
