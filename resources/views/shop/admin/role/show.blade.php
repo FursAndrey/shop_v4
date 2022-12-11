@@ -14,36 +14,34 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">name</th>
-            <th scope="col">description</th>
-            <th scope="col">created/<br/>updated</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ $role->id }}</td>
-            <td>{{ $role->name }}</td>
-            <td>{{ $role->description }}</td>
-            <td>{{ $role->created_at }}<br/>{{ $role->updated_at }}</td>
-            <td>
-                <form action="{{ route('role.destroy', $role->id) }}" method="Post">
-                    @can('update', $role)
-                        <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
-                    @endcan
-                    @can('delete', $role)
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>id</x-my.table.th>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>description</x-my.table.th>
+            <x-my.table.th>created/<br/>updated</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    <x-my.table.tr>
+        <x-my.table.td>{{ $role->id }}</x-my.table.td>
+        <x-my.table.td>{{ $role->name }}</x-my.table.td>
+        <x-my.table.td>{{ $role->description }}</x-my.table.td>
+        <x-my.table.td>{{ $role->created_at }}<br/>{{ $role->updated_at }}</x-my.table.td>
+        <x-my.table.td>
+            <form action="{{ route('role.destroy', $role->id) }}" method="Post">
+                @can('update', $role)
+                    <a class="btn btn-primary" href="{{ route('role.edit', $role->id) }}">Edit</a>
+                @endcan
+                @can('delete', $role)
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                @endcan
+            </form>
+        </x-my.table.td>
+    </x-my.table.tr>
+</x-my.table>
 
 @endsection

@@ -14,21 +14,20 @@
     </div>
 @endif
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">product</th>
-            <th scope="col">options</th>
-            <th scope="col">price</th>
-            <th scope="col">count</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($skus as $sku)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>id</x-my.table.th>
+            <x-my.table.th>product</x-my.table.th>
+            <x-my.table.th>options</x-my.table.th>
+            <x-my.table.th>price</x-my.table.th>
+            <x-my.table.th>count</x-my.table.th>
+            <x-my.table.th></x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($skus as $sku)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $sku)
                     <a class="btn btn-primary" href="{{ route('sku.show', $sku->id) }}">
                         {{ $sku->id }}
@@ -36,16 +35,16 @@
                 @else
                     {{ $sku->id }}
                 @endcan
-            </td>
-            <td>{{ $sku->product->name }}</td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>{{ $sku->product->name }}</x-my.table.td>
+            <x-my.table.td>
                 @foreach ($sku->options as $option)
                     {{ $option->name }}<br/>
                 @endforeach
-            </td>
-            <td>{{ $sku->price }} {{ $sku->CurrencyCode }}</td>
-            <td>{{ $sku->count }}</td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>{{ $sku->price }} {{ $sku->CurrencyCode }}</x-my.table.td>
+            <x-my.table.td>{{ $sku->count }}</x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('sku.destroy', $sku->id) }}" method="Post">
                     @can('update', $sku)
                         <a class="btn btn-primary" href="{{ route('sku.edit', $sku->id) }}">Edit</a>
@@ -56,11 +55,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $skus->links() !!}
 
 @endsection

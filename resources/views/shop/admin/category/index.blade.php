@@ -13,18 +13,16 @@
         <p>{{ $message }}</p>
     </div>
 @endif
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($categories as $category)
-        <tr>
-            <td>
+<x-my.table>
+    <x-slot name="thead">
+        <x-my.table.tr>
+            <x-my.table.th>name</x-my.table.th>
+            <x-my.table.th>&nbsp;</x-my.table.th>
+        </x-my.table.tr>
+    </x-slot>
+    @foreach ($categories as $category)
+        <x-my.table.tr>
+            <x-my.table.td>
                 @can('view', $category)
                     <a class="btn btn-primary" href="{{ route('category.show', $category->id) }}">
                         {{ $category->name }}
@@ -32,8 +30,8 @@
                 @else
                     {{ $category->name }}
                 @endcan
-            </td>
-            <td>
+            </x-my.table.td>
+            <x-my.table.td>
                 <form action="{{ route('category.destroy', $category->id) }}" method="Post">
                     @can('update', $category)
                         <a class="btn btn-primary" href="{{ route('category.edit', $category->id) }}">Edit</a>
@@ -44,11 +42,10 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </x-my.table.td>
+        </x-my.table.tr>
+    @endforeach
+</x-my.table>
 {!! $categories->links() !!}
 
 @endsection
