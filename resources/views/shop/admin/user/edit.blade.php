@@ -12,18 +12,15 @@
     @method('PUT')
     <div class="row">
         <div class="mb-3">
-            @php
-                $user_roles = $user->roles->map->id->toArray();
-            @endphp
             <label for="role_id" class="form-label">role</label>
-            <select name="role_id[]" class="form-select" id="role_id">
-                <option value="0">Не выбрано</option>
-                @foreach ($roles as $role)
-                    <option value="{{ $role->id }}" @if(null !== old('role_id')) @selected(old('role_id') == $role->id) @else @selected(in_array($role->id, $user_roles)) @endif>
-                        {{ $role->name }}
-                    </option>
-                @endforeach
-            </select>
+            @php
+                if (null !== old('role_id')) {
+                    $oldValue = old('role_id');
+                } else {
+                    $oldValue = $user->roles->map->id->toArray();
+                }
+            @endphp
+            <x-my.form.select :oldSelected="$oldValue" :options="$roles" id="role_id" name="role_id[]"/>
             @error('role_id')
                 <x-my.alert.danger>{{ $message }}</x-my.alert.danger>
             @enderror

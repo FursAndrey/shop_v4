@@ -31,30 +31,29 @@
         </div>
         <div class="mb-3">
             <label for="product_id" class="form-label">product</label>
-            <select name="product_id" class="form-select" id="product_id">
-                @foreach ($products as $product)
-                <option value="{{ $product->id }}" @if(null !== old('product_id')) @selected(old('product_id') == $product->id) @else @selected($sku->product_id == $product->id) @endif>
-                    {{ $product->id }} - {{ $product->name }}
-                </option>
-                @endforeach
-            </select>
+            @php
+                if (null !== old('product_id')) {
+                    $oldValue = old('product_id');
+                } else {
+                    $oldValue = $sku->product_id;
+                }
+            @endphp
+            <x-my.form.select :oldSelected="$oldValue" :options="$products" id="product_id" name="product_id"/>
             @error('product_id')
                 <x-my.alert.danger>{{ $message }}</x-my.alert.danger>
             @enderror
         </div>
-        @php
-            $sku_options = $sku->options->map->id->toArray();
-        @endphp
         @foreach ($sku->product->properties as $property)
             <div class="mb-3">
                 <label for="option_id" class="form-label">property {{ $property->name }}</label>
-                <select name="option_id[]" class="form-select" id="option_id">
-                    @foreach ($property->options as $option)
-                        <option value="{{ $option->id }}" @if(null !== old('option_id')) @selected(old('option_id') == $option->id) @else @selected(in_array($option->id, $sku_options)) @endif>
-                            {{ $option->name }}
-                        </option>
-                    @endforeach
-                </select>
+                @php
+                    if (null !== old('option_id')) {
+                        $oldValue = old('option_id');
+                    } else {
+                        $oldValue = $sku->options->map->id->toArray();
+                    }
+                @endphp
+                <x-my.form.select :oldSelected="$oldValue" :options="$property->options" id="option_id" name="option_id[]"/>
                 @error('option_id')
                     <x-my.alert.danger>{{ $message }}</x-my.alert.danger>
                 @enderror

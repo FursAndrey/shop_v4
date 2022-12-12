@@ -31,13 +31,14 @@
         </div>
         <div class="mb-3">
             <label for="property_id" class="form-label">Property</label>
-            <select name="property_id" class="form-select" id="property_id">
-                @foreach ($properties as $property)
-                <option value="{{ $property->id }}" @if(null !== old('property_id')) @selected(old('property_id') == $property->id) @else @selected($option->property_id == $property->id) @endif>
-                    {{ $property->id }} - {{ $property->name_ru }}/{{ $property->name_en }}
-                </option>
-                @endforeach
-            </select>
+            @php
+                if (null !== old('property_id')) {
+                    $oldValue = old('property_id');
+                } else {
+                    $oldValue = $option->property_id;
+                }
+            @endphp
+            <x-my.form.select :options="$properties" :oldSelected="old('property_id')" id="property_id" name="property_id"/>
             @error('property_id')
                 <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
