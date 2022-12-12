@@ -49,13 +49,14 @@
         </div>
         <div class="mb-3">
             <label for="category_id" class="form-label">Категория</label>
-            <select name="category_id" class="form-select" id="category_id">
-                @foreach ($categories as $category)
-                <option value="{{ $category->id }}" @if(null !== old('category_id')) @selected(old('category_id') == $category->id) @else @selected($product->category_id == $category->id) @endif>
-                    {{ $category->id }} - {{ $category->name_ru }}/{{ $category->name_en }}
-                </option>
-                @endforeach
-            </select>
+            @php
+                if (null !== old('category_id')) {
+                    $oldValue = old('category_id');
+                } else {
+                    $oldValue = $product->category_id;
+                }
+            @endphp
+            <x-my.form.select :oldSelected="$oldValue" :options="$categories" id="category_id" name="category_id"/>
             @error('category_id')
                 <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
@@ -63,15 +64,13 @@
         <div class="mb-3">
             <label for="property_id" class="form-label">Property</label>
             @php
-                $product_properties = $product->properties->map->id->toArray();
+                if (null !== old('property_id')) {
+                    $oldValue = old('property_id');
+                } else {
+                    $oldValue = $product->properties->map->id->toArray();
+                }
             @endphp
-            <select name="property_id[]" class="form-select" id="property_id" multiple size="5">
-                @foreach ($properties as $property)
-                <option value="{{ $property->id }}" @if(null !== old('property_id')) @selected(old('property_id') == $property->id) @else @selected(in_array($property->id, $product_properties)) @endif>
-                    {{ $property->id }} - {{ $property->name_ru }}/{{ $property->name_en }}
-                </option>
-                @endforeach
-            </select>
+            <x-my.form.select :oldSelected="$oldValue" :options="$properties" id="property_id" name="property_id[]" multiple size="5"/>
             @error('property_id')
             <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror

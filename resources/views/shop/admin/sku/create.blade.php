@@ -30,13 +30,7 @@
         </div>
         <div class="mb-3">
             <label for="product_id" class="form-label">product</label>
-            <select name="product_id" class="form-select" id="product_id">
-                @foreach ($products as $product)
-                <option value="{{ $product->id }}" @selected(old('product_id') == $product->id)>
-                    {{ $product->id }} - {{ $product->name }}
-                </option>
-                @endforeach
-            </select>
+            <x-my.form.select :options="$products" :oldSelected="old('product_id')" id="product_id" name="product_id"/>
             @error('product_id')
                 <x-my.alert.danger class="my-1">{{ $message }}</x-my.alert.danger>
             @enderror
