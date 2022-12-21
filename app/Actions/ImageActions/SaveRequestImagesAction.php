@@ -4,7 +4,7 @@ namespace App\Actions\ImageActions;
 
 class SaveRequestImagesAction
 {
-    public function __invoke($files)
+    public function __invoke(array $files): array
     {
         $fileNames = [];
         if (!is_null($files)) {

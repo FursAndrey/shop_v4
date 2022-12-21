@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 trait dbTranslate {
     protected $defaultLocale = 'ru';
 
-    public function translate($fieldName)
+    public function translate(string $fieldName): string
     {
         $locale = App::getLocale() ?? $this->defaultLocale;
         return $fieldName.'_'.$locale;

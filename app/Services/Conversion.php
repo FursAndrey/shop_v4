@@ -7,7 +7,7 @@ class Conversion
 {
     protected static $container;
     
-    protected static function loadContainer()
+    protected static function loadContainer(): void
     {
         if (is_null(self::$container)) {
             $currencies = Currency::get();
@@ -17,23 +17,23 @@ class Conversion
         }
     }
 
-    public static function getCurrencies()
+    public static function getCurrencies(): array
     {
         self::loadContainer();
         return self::$container;
     }
 
-    public static function getCurrencyCode()
+    public static function getCurrencyCode(): string
     {
         return session('currency', 'BYN');
     }
 
-    public static function setCurrencyCode($currencyCode)
+    public static function setCurrencyCode(string $currencyCode): void
     {
         session(['currency' => $currencyCode]);
     }
 
-    public static function convert($sum, $from = 'BYN', $to = null)
+    public static function convert(float $sum, string $from = 'BYN', string $to = null): float
     {
         self::loadContainer();
         $originCurrency = self::$container[$from];

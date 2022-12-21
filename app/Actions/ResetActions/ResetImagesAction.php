@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ResetImagesAction
 {
-    public function __invoke(string $folderTo, string $folderFrom)
+    public function __invoke(string $folderTo, string $folderFrom): void
     {
         Storage::disk('public')->deleteDirectory($folderTo);
         Storage::disk('public')->makeDirectory($folderTo);

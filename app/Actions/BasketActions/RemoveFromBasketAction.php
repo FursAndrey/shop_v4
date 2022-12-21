@@ -6,7 +6,7 @@ use App\Models\Sku;
 
 class RemoveFromBasketAction
 {
-    public function __invoke(Sku $sku)
+    public function __invoke(Sku $sku): void
     {
         $basket = (new GetBasketAction)();
         if (isset($basket[$sku->id]) && $basket[$sku->id]->countInBasket > 1) {

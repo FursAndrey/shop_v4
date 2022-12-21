@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class ResetProjectAction
 {
-    public function __invoke()
+    public function __invoke(): void
     {
         Artisan::call('migrate:fresh --seed');
         

@@ -6,7 +6,7 @@ use App\Models\Sku;
 
 class DeleteSkuAction
 {
-    public function __invoke(Sku $sku)
+    public function __invoke(Sku $sku): void
     {
         $sku->options()->detach();
         $sku->delete();

@@ -6,7 +6,7 @@ use App\Models\Sku;
 
 class RemoveItFromBasketAction
 {
-    public function __invoke(Sku $sku)
+    public function __invoke(Sku $sku): void
     {
         $basket = (new GetBasketAction)();
         

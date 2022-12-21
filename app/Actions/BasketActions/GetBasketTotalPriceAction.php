@@ -4,7 +4,7 @@ namespace App\Actions\BasketActions;
 
 class GetBasketTotalPriceAction
 {
-    public function __invoke($basket)
+    public function __invoke(array $basket): float
     {
         $totalPrice = 0;
         //считаем общую сумму и проверяем доступность каждого товара в заказе
