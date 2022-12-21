@@ -7,7 +7,7 @@ use App\Models\Product;
 
 class DeleteProductAction
 {
-    public function __invoke(Product $product)
+    public function __invoke(Product $product): void
     {
         $product->properties()->detach();
         

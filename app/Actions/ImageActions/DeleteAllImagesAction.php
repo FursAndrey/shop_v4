@@ -6,7 +6,7 @@ use App\Models\Product;
 
 class DeleteAllImagesAction
 {
-    public function __invoke(Product $product)
+    public function __invoke(Product $product): void
     {
         if (!is_null($product->images)) {
             foreach ($product->images as $image) {

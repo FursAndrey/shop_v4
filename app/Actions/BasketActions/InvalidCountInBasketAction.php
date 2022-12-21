@@ -6,7 +6,7 @@ use App\Models\Sku;
 
 class InvalidCountInBasketAction
 {
-    public function __invoke($basket)
+    public function __invoke(array $basket): bool
     {
         foreach ($basket as $skuInOrder) {
             $sku = Sku::find($skuInOrder->id);
