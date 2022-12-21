@@ -7,6 +7,7 @@ use App\Http\Requests\ConfirmRequest;
 use App\Services\Conversion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -21,12 +22,12 @@ class Order extends Model
         'status',
     ];
     
-    public function orderedProducts()
+    public function orderedProducts(): HasMany
     {
         return $this->hasMany(OrderedProduct::class);
     }
 
-    public static function prepareForCreate(ConfirmRequest $request, $basket)
+    public static function prepareForCreate(ConfirmRequest $request, array $basket): array
     {
         $confirm = $request->validated();
         $confirm['currency_code'] = Conversion::getCurrencyCode();
