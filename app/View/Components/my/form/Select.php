@@ -3,6 +3,7 @@
 namespace App\View\Components\My\Form;
 
 use Illuminate\View\Component;
+use Illuminate\Database\Eloquent\Collection;
 
 class Select extends Component
 {
@@ -13,7 +14,7 @@ class Select extends Component
      *
      * @return void
      */
-    public function __construct($options, $oldSelected = null)
+    public function __construct(Collection $options, $oldSelected = null)
     {
         $this->options = $options;
         $this->oldSelected = $oldSelected;
