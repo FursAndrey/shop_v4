@@ -21,14 +21,14 @@ class BasketController
     {
         (new AddIntoBasketAction)($sku);
         
-        return redirect()->route('productList');
+        return redirect()->back();
     }
 
     public function fromBasket(Sku $sku)
     {
         (new RemoveFromBasketAction)($sku);
 
-        return redirect()->route('productList');
+        return redirect()->back();
     }
 
     public function clearBasket()
@@ -42,6 +42,6 @@ class BasketController
     {
         (new RemoveItFromBasketAction)($sku);
         
-        return redirect()->route('productList');
+        return redirect()->back();
     }
 }
