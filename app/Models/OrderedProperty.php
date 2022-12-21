@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\dbTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderedProperty extends Model
 {
@@ -18,12 +19,12 @@ class OrderedProperty extends Model
         'option_name_en',
     ];
 
-    public function orderedProduct()
+    public function orderedProduct(): BelongsTo
     {
         return $this->belongsTo(OrderedProduct::class);
     }
 
-    public static function prepareForCreate(Option $option, int $productId)
+    public static function prepareForCreate(Option $option, int $productId): array
     {
         $orderedProperty['property_name_ru'] = $option->property->name_ru;
         $orderedProperty['property_name_en'] = $option->property->name_en;

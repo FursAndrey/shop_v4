@@ -6,6 +6,8 @@ use App\Models\Traits\dbTranslate;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class OrderedProduct extends Model
 {
@@ -22,17 +24,17 @@ class OrderedProduct extends Model
 
     protected static $hitArray = [];
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function orderedProperties()
+    public function orderedProperties(): HasMany
     {
         return $this->hasMany(OrderedProperty::class);
     }
 
-    public static function prepareForCreate(Sku $skuFromBasket, int $orderId)
+    public static function prepareForCreate(Sku $skuFromBasket, int $orderId): array
     {
         $orderedProduct['sku_id'] = $skuFromBasket->id;
         $orderedProduct['name_ru'] = $skuFromBasket->product->name_ru;
@@ -49,12 +51,12 @@ class OrderedProduct extends Model
         return $this->$fieldName;
     }
     
-    public static function getHitArray()
+    public static function getHitArray(): array
     {
         return self::hitArray();
     }
 
-    protected static function hitArray()
+    protected static function hitArray(): array
     {
         if (self::$hitArray == []) {
             self::$hitArray = self::groupBy('sku_id')
