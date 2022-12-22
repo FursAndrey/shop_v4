@@ -2,7 +2,7 @@
 
 namespace App\Actions\ProductActions;
 
-use App\Actions\ImageActions\SaveRequestImagesAction;
+use App\Actions\ImageActions\SaveImagesAction;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class CreateProductAction
         $product = Product::create($request->validated());
         $product->properties()->sync($request->property_id);
 
-        $fileNames = (new SaveRequestImagesAction)($request->image);
+        $fileNames = SaveImagesAction::all($request->image);
         foreach ($fileNames as $fileName) {
             Image::create([
                 'product_id' => $product->id,

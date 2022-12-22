@@ -2,7 +2,7 @@
 
 namespace App\Actions\ProductActions;
 
-use App\Actions\ImageActions\DeleteAllImagesAction;
+use App\Actions\ImageActions\DeleteImagesAction;
 use App\Models\Product;
 
 class DeleteProductAction
@@ -11,7 +11,7 @@ class DeleteProductAction
     {
         $product->properties()->detach();
         
-        (new DeleteAllImagesAction)($product);
+        DeleteImagesAction::all($product);
         
         $product->delete();
     }
