@@ -1,15 +1,15 @@
 Учебный проект
 
-- клонировать с гитхаба 
+- клонировать с гитхаба: 
     git clone https://github.com/FursAndrey/shop_v4.git
 
-- загрузить Laravel
+- загрузить Laravel:
     composer install
 
-- копировать .env.example в .env
+- копировать .env.example в .env:
     copy .env.example .env
 
-- создать новый ключ для проекта команда
+- создать новый ключ для проекта команда:
     php artisan key:generate
 
 - создаю базу данных для проекта
@@ -18,13 +18,13 @@
 
 - в файле .env настроить подключение к почтовому сервису
 
-- создать таблицы и заполнить их начальными данными
+- создать таблицы и заполнить их начальными данными:
     php artisan migrate --seed
 
-- создать symlink на storage
+- создать symlink на storage:
     php artisan storage:link
 
-- npm
+- настроить npm:
     npm install
 
     npm run build
