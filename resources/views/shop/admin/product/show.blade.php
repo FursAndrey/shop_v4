@@ -51,38 +51,41 @@
         </x-my.table.td>
     </x-my.table.tr>
 </x-my.table>
-<x-my.table>
-    <x-slot name="thead">
+
+@if(count($product->images) > 0)
+    <x-my.table>
+        <x-slot name="thead">
+            <x-my.table.tr>
+                <x-my.table.th>images</x-my.table.th>
+                <x-my.table.th class="w-25"></x-my.table.th>
+            </x-my.table.tr>
+        </x-slot>
         <x-my.table.tr>
-            <x-my.table.th>images</x-my.table.th>
-            <x-my.table.th class="w-25"></x-my.table.th>
+            <x-my.table.td>
+                @foreach ($product->images as $image)
+                    <div class="d-inline-block border border-primary border-2 p-1">
+                        <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" class="d-inline-block" style="width: 200px;">
+                        @can('delete-image', $image)
+                            <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <x-my.btn.danger class="rounded-circle">X</x-my.btn.danger>
+                            </form>
+                        @endcan
+                    </div>
+                @endforeach
+            </x-my.table.td>
+            <x-my.table.td>
+                @can('delete-image', $image)
+                    <form action="{{ route('daleteAllImg', $product->id) }}" method="Post">
+                        @csrf
+                        @method('DELETE')
+                        <x-my.btn.danger>Delete all images</x-my.btn.danger>
+                    </form>
+                @endcan
+            </x-my.table.td>
         </x-my.table.tr>
-    </x-slot>
-    <x-my.table.tr>
-        <x-my.table.td>
-            @foreach ($product->images as $image)
-                <div class="d-inline-block border border-primary border-2 p-1">
-                    <img src="{{ $image->file_for_view }}" alt="изображение не добавлено" class="d-inline-block" style="width: 200px;">
-                    @can('delete-image', $image)
-                        <form action="{{ route('daleteOneImg', [$product->id, $image->id]) }}" method="Post" class="d-inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <x-my.btn.danger class="rounded-circle">X</x-my.btn.danger>
-                        </form>
-                    @endcan
-                </div>
-            @endforeach
-        </x-my.table.td>
-        <x-my.table.td>
-            @can('delete-image', $image)
-                <form action="{{ route('daleteAllImg', $product->id) }}" method="Post">
-                    @csrf
-                    @method('DELETE')
-                    <x-my.btn.danger>Delete all images</x-my.btn.danger>
-                </form>
-            @endcan
-        </x-my.table.td>
-    </x-my.table.tr>
-</x-my.table>
+    </x-my.table>
+@endif
 
 @endsection
