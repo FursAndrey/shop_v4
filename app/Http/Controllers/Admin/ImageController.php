@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\ImageActions\DeleteAllImagesAction;
-use App\Actions\ImageActions\DeleteOneImageAction;
+use App\Actions\ImageActions\DeleteImagesAction;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Product;
@@ -14,7 +13,7 @@ class ImageController extends Controller
     {
         $this->authorize('delete-image', Image::class);
 
-        (new DeleteAllImagesAction)($product);
+        DeleteImagesAction::all($product);
         return redirect()->route('product.show', $product)->with('success','All images have been deleted successfully');
     }
 
@@ -22,7 +21,7 @@ class ImageController extends Controller
     {
         $this->authorize('delete-image', Image::class);
         
-        (new DeleteOneImageAction)($image);
+        DeleteImagesAction::one($image);
         return redirect()->route('product.show', $product)->with('success','Image has been deleted successfully');
     }
 }
